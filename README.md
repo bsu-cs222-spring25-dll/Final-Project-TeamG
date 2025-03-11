@@ -1,4 +1,4 @@
-# Final-Project-TeamG
+# Final Project Team G
 
 ### Authors
 Lizzie Collins, Christopher Davis, Alexis Evans, and Aja Moore
