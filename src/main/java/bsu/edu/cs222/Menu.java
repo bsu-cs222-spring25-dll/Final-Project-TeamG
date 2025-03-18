@@ -15,14 +15,14 @@ public class Menu extends Application {
         primaryStage.setTitle("RPG Battle");
 
         BorderPane base = new BorderPane();
-        base.setStyle("-fx-background-color: #2c3e50;");
+        base.setStyle("-fx-background-color: #6badce;");
         //Image backgroundImage = new Image("");
         //ImageView backgroundView = new ImageView();
         //backgroundView.setFitWidth();
         //backgroundView.setFitHeight();
 
         Label title = new Label("RPG Battle");
-        title.setFont(new Font("Times New Roman", 35));
+        title.setFont(new Font("Times New Roman", 60));
 
         Button fightMonsterButton = new Button("Fight Monster");
         fightMonsterButton.setOnAction(e -> openDifficultyMenu());
