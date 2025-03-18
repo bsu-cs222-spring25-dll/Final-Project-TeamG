@@ -3,9 +3,11 @@ package bsu.edu.cs222;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Menu extends Application {
@@ -19,7 +21,8 @@ public class Menu extends Application {
         //backgroundView.setFitWidth();
         //backgroundView.setFitHeight();
 
-        //title needed
+        Label title = new Label("RPG Battle");
+        title.setFont(new Font("Times New Roman", 35));
 
         Button fightMonsterButton = new Button("Fight Monster");
         fightMonsterButton.setOnAction(e -> openDifficultyMenu());
@@ -31,7 +34,7 @@ public class Menu extends Application {
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(e -> primaryStage.close());
 
-        VBox menuBox = new VBox(15.0, fightMonsterButton, editPlayerButton);
+        VBox menuBox = new VBox(15.0, title, fightMonsterButton, editPlayerButton);
         menuBox.setStyle("-fx-alignment: center;");
 
         StackPane exitPane = new StackPane(exitButton);
