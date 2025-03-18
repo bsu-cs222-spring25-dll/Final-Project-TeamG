@@ -1,5 +1,9 @@
 package bsu.edu.cs222;
 
-public class DifficultyMenu {
+import javafx.stage.Stage;
 
+public class DifficultyMenu {
+    public void start(Stage stage) {
+
+    }
 }

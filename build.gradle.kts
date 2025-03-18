@@ -4,7 +4,7 @@ plugins {
     id("org.openjfx.javafxplugin") version "0.1.0"
 }
 
-group = "org.example"
+group = "bsu.edu.cs222"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -19,6 +19,8 @@ dependencies {
     implementation("org.slf4j:slf4j-nop:2.0.11")
     implementation("com.jayway.jsonpath:json-path:2.9.0")
     implementation("net.minidev:json-smart:2.5.0")
+    implementation("org.openjfx:javafx-controls:22")
+    implementation("org.openjfx:javafx-fxml:22")
 }
 tasks.test {
     useJUnitPlatform()
@@ -28,5 +30,5 @@ javafx {
     modules("javafx.controls", "javafx.fxml")
 }
 application {
-    mainClass.set("edu.bsu.cs.Main")
+    mainClass.set("bsu.edu.cs222.Main")
 }
