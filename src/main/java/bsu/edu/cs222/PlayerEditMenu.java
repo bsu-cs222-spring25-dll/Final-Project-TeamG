@@ -5,12 +5,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class PlayerEditMenu {
     //variables
@@ -34,6 +35,9 @@ public class PlayerEditMenu {
 
     GridPane statsGrid = new GridPane();
 
+
+
+
     VBox titleBox = new VBox(10, playerLabel);
     VBox playerSelection = new VBox(10, playerOneButton, playerTwoButton);
 
@@ -46,7 +50,26 @@ public class PlayerEditMenu {
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
 
+
+        //Importing the actual image to be called upon
+        FileInputStream input = null;//Added
+        try {
+            input = new FileInputStream("src/Assets/CharacterEditBG.PNG");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Image image = new Image(input);
+
+        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundimage);
+
+
         Scene scene = new Scene(base, 800, 600);
+
+        //THIS IS WHAT SETS THE BACKGROUND FOR THIS MENU BUT IDK WHY IT'S NOT SHOWING
+        //VBox menuOptions = new VBox(15);
+        //menuOptions.setBackground(background);
+
         stage.setScene(scene);
         stage.show();
 
@@ -73,6 +96,7 @@ public class PlayerEditMenu {
         base.setLeft(playerSelection);
         base.setCenter(statsGrid);
         base.setBottom(buttonBox);
+        base.setBackground(background);
 
     }
 
@@ -84,7 +108,11 @@ public class PlayerEditMenu {
 
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
-        menu.start(new Stage());
+        try {
+            menu.start(new Stage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         stage.close();
     }
 }

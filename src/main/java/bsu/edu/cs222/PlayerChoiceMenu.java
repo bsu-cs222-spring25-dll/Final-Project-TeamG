@@ -4,10 +4,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class PlayerChoiceMenu {
     String selectedDifficulty = " ";
@@ -16,22 +19,42 @@ public class PlayerChoiceMenu {
     public void start(Stage stage) {
         stage.setTitle("Player Choice");
 
-        Label title = new Label("Choose Enemy");
-        title.setFont(new Font("Times New Roman", 60));
-        Label difficultyLabel = new Label("Difficulty: " + selectedDifficulty);
-        difficultyLabel.setFont(new Font("Times New Roman", 40));
+        //Label title = new Label("Choose Enemy");
+        //title.setFont(new Font("Times New Roman", 60));
+        //Label difficultyLabel = new Label("Difficulty: " + selectedDifficulty);
+        //difficultyLabel.setFont(new Font("Times New Roman", 40));
 
-        Button enemyOneButton = new Button("Enemy One");
-        enemyOneButton.setOnAction(e -> selectEnemy("Enemy One"));
-        Button enemyTwoButton = new Button("Enemy Two");
-        enemyTwoButton.setOnAction(e -> selectEnemy("Enemy Two"));
+        Button enemyOneButton = new Button("Character One");
+        enemyOneButton.setOnAction(e -> selectEnemy("Character One"));
+        Button enemyTwoButton = new Button("Character Two");
+        enemyTwoButton.setOnAction(e -> selectEnemy("Character Two"));
+
+        //Button enemyOneButton = new Button("Enemy One");
+        //enemyOneButton.setOnAction(e -> selectEnemy("Enemy One"));
+        //Button enemyTwoButton = new Button("Enemy Two");
+        //enemyTwoButton.setOnAction(e -> selectEnemy("Enemy Two"));
+
         Button backButton = new Button("Back to Difficulty");
         backButton.setOnAction(e -> returnToDifficultyMenu(stage));
         Button startBattleButton = new Button("Start Battle");
         startBattleButton.setOnAction(e -> startBattle(stage));
 
-        VBox menuOptions = new VBox(15, title, difficultyLabel, enemyOneButton, enemyTwoButton, startBattleButton, backButton);
+        FileInputStream input = null;//Added
+        try {
+            input = new FileInputStream("src/Assets/CharacterSelectMenuBG.PNG");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Image image = new Image(input);
+
+        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundimage);
+
+
+        //VBox menuOptions = new VBox(15, title, difficultyLabel, enemyOneButton, enemyTwoButton, startBattleButton, backButton);
+        VBox menuOptions = new VBox(15, enemyOneButton, enemyTwoButton, startBattleButton, backButton);
         menuOptions.setAlignment(Pos.CENTER);
+        menuOptions.setBackground(background);
 
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");

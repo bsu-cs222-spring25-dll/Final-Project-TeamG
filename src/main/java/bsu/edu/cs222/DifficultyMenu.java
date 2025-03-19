@@ -4,10 +4,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import java.io.FileInputStream;
 
 public class DifficultyMenu {
 
@@ -15,6 +19,17 @@ public class DifficultyMenu {
         stage.setTitle("Difficulty menu");
         Label title = new Label("Difficulty Menu");
         title.setFont(new Font("Times New Roman", 60));
+
+        FileInputStream input = null;//Added
+        try {
+            input = new FileInputStream("src/Assets/DifficultyMenuBG.PNG");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Image image = new Image(input);
+
+        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundimage);
 
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
@@ -33,6 +48,7 @@ public class DifficultyMenu {
         mainMenuButton.setOnAction(e -> returnToMainMenu(stage));
 
         VBox menuOptions = new VBox(15, title, easyButton, mediumButton, hardButton, mainMenuButton);
+        menuOptions.setBackground(background); // adding image background?
         menuOptions.setAlignment(Pos.CENTER);
 
         base.setCenter(menuOptions);
@@ -44,10 +60,14 @@ public class DifficultyMenu {
         playerChoiceMenu.start(new Stage());
         stage.close();
     }
-
+//here cganged 031925 215pm
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
-        menu.start(new Stage());
+        try {
+            menu.start(new Stage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         stage.close();
     }
 }
