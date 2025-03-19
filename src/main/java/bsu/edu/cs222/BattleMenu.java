@@ -1,5 +1,9 @@
 package bsu.edu.cs222;
 
-public class BattleMenu {
+import javafx.stage.Stage;
 
+public class BattleMenu {
+    public void start(Stage stage) {
+
+    }
 }

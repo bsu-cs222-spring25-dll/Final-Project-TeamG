@@ -25,10 +25,10 @@ public class Menu extends Application {
         title.setFont(new Font("Times New Roman", 60));
 
         Button fightMonsterButton = new Button("Fight Monster");
-        fightMonsterButton.setOnAction(e -> openDifficultyMenu());
+        fightMonsterButton.setOnAction(e -> openDifficultyMenu(primaryStage));
 
         Button editPlayerButton = new Button("Edit Player");
-        editPlayerButton.setOnAction(e -> openPlayerEditMenu());
+        editPlayerButton.setOnAction(e -> openPlayerEditMenu(primaryStage));
 
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
@@ -48,16 +48,18 @@ public class Menu extends Application {
         primaryStage.show();
     }
 
-    private void openDifficultyMenu(){
+    private void openDifficultyMenu(Stage primaryStage){
         System.out.println("Opening Difficulty menu...");
         DifficultyMenu difficultyMenu = new DifficultyMenu();
         difficultyMenu.start(new Stage());
+        primaryStage.close();
     }
 
-    private void openPlayerEditMenu(){
+    private void openPlayerEditMenu(Stage primaryStage){
         System.out.println("Opening Player edit menu...");
         PlayerEditMenu playerEditMenu = new PlayerEditMenu();
         playerEditMenu.start(new Stage());
+        primaryStage.close();
     }
 
     public static void main(String[] args){
