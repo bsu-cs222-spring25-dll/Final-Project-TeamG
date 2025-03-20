@@ -9,3 +9,8 @@ An RPG battle where the user can choose and edit their character, select battle 
 ### Needed
 - IntelliJ Idea
 - JavaFX
+
+### Iteration 1
+Classes Created: 
+- Battle Menu
+- EndCard 
