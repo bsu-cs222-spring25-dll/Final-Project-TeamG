@@ -2,13 +2,15 @@ package bsu.edu.cs222;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
-import bsu.edu.cs222.Menu;
+//import bsu.edu.cs222.Menu;
 
 public class BattleMenu {
     public void start(Stage stage) {
@@ -20,8 +22,20 @@ public class BattleMenu {
         Button editPlayerButton = new Button("Return to Menu");
         editPlayerButton.setOnAction(e -> openEndCard((stage)));
 
+        FileInputStream input = null;//Added
+        try {
+            input = new FileInputStream("src/Assets/BattleMenuSketchBG.jpg");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        javafx.scene.image.Image image = new Image(input);
+
+        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundimage);
+
         VBox menuOptions = new VBox(15.0, editPlayerButton);
         menuOptions.setStyle("-fx-alignment: center;");
+        menuOptions.setBackground(background);
 
         Scene scene = new Scene(base, 800, 600);
         stage.setScene(scene);
