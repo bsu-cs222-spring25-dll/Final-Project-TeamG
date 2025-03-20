@@ -12,5 +12,13 @@ An RPG battle where the user can choose and edit their character, select battle 
 
 ### Iteration 1
 Classes Created: 
-- Battle Menu
-- EndCard 
+- Battle Menu 
+- EndCard
+- Main
+- Menu
+- PlayerChoiceMenu
+- PlayerEditMenu
+- DifficultyMenu
+
+### Resources
+[https://github.com/jjenkov/javafx-examples/tree/main]
