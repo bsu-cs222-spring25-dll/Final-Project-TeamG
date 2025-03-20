@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -29,11 +28,6 @@ public class PlayerChoiceMenu {
         Button enemyTwoButton = new Button("Character Two");
         enemyTwoButton.setOnAction(e -> selectEnemy("Character Two"));
 
-        //Button enemyOneButton = new Button("Enemy One");
-        //enemyOneButton.setOnAction(e -> selectEnemy("Enemy One"));
-        //Button enemyTwoButton = new Button("Enemy Two");
-        //enemyTwoButton.setOnAction(e -> selectEnemy("Enemy Two"));
-
         Button backButton = new Button("Back to Difficulty");
         backButton.setOnAction(e -> returnToDifficultyMenu(stage));
         Button startBattleButton = new Button("Start Battle");
@@ -50,8 +44,6 @@ public class PlayerChoiceMenu {
         BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
         Background background = new Background(backgroundimage);
 
-
-        //VBox menuOptions = new VBox(15, title, difficultyLabel, enemyOneButton, enemyTwoButton, startBattleButton, backButton);
         VBox menuOptions = new VBox(15, enemyOneButton, enemyTwoButton, startBattleButton, backButton);
         menuOptions.setAlignment(Pos.CENTER);
         menuOptions.setBackground(background);

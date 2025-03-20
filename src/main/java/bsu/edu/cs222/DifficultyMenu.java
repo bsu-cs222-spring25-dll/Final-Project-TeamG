@@ -10,15 +10,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import java.io.FileInputStream;
 
 public class DifficultyMenu {
-
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
-        Label title = new Label("Difficulty Menu");
-        title.setFont(new Font("Times New Roman", 60));
 
         FileInputStream input = null;//Added
         try {
@@ -47,7 +43,7 @@ public class DifficultyMenu {
         Button mainMenuButton = new Button("Back to Main Menu");
         mainMenuButton.setOnAction(e -> returnToMainMenu(stage));
 
-        VBox menuOptions = new VBox(15, title, easyButton, mediumButton, hardButton, mainMenuButton);
+        VBox menuOptions = new VBox(15, easyButton, mediumButton, hardButton, mainMenuButton);
         menuOptions.setBackground(background); // adding image background?
         menuOptions.setAlignment(Pos.CENTER);
 
@@ -60,7 +56,7 @@ public class DifficultyMenu {
         playerChoiceMenu.start(new Stage());
         stage.close();
     }
-//here cganged 031925 215pm
+
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
         try {

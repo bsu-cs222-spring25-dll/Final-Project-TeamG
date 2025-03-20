@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.image.*;
 import javafx.stage.Stage;
-
 import java.awt.*;
 import java.io.*;
 import javafx.scene.text.Font;
@@ -28,15 +27,7 @@ public class Menu extends Application {
         BorderPane base = new BorderPane();
 
         //****** continue ....
-
         base.setStyle("-fx-background-color: #6badce;");
-        //Image backgroundImage = new Image("");
-        //ImageView backgroundView = new ImageView();
-        //backgroundView.setFitWidth();
-        //backgroundView.setFitHeight();
-
-        //Label title = new Label("RPG Battle");
-        //title.setFont(new Font("Times New Roman", 60));
 
         Button fightMonsterButton = new Button("Fight Monster");
         //fightMonsterButton.setMaxSize(150,150);
@@ -58,7 +49,6 @@ public class Menu extends Application {
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(e -> primaryStage.close());
 
-        //VBox menuBox = new VBox(15.0, title, fightMonsterButton, editPlayerButton);
         VBox menuBox = new VBox(15.0, fightMonsterButton, editPlayerButton);
         menuBox.setStyle("-fx-alignment: center;");
         menuBox.setBackground(background); // adding image background?
