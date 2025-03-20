@@ -19,8 +19,8 @@ public class BattleMenu {
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
 
-        Button editPlayerButton = new Button("Return to Menu");
-        editPlayerButton.setOnAction(e -> openEndCard((stage)));
+        Button endCardButton = new Button("Go to end card menu");
+        endCardButton.setOnAction(e -> openEndCard((stage)));
 
         FileInputStream input = null;//Added
         try {
@@ -33,8 +33,8 @@ public class BattleMenu {
         BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
         Background background = new Background(backgroundimage);
 
-        VBox menuOptions = new VBox(15.0, editPlayerButton);
-        menuOptions.setStyle("-fx-alignment: center;");
+        VBox menuOptions = new VBox(15.0, endCardButton);
+        menuOptions.setStyle("-fx-alignment: bottom-right;");
         menuOptions.setBackground(background);
 
         Scene scene = new Scene(base, 800, 600);
