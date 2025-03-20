@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class EndCard {
     public void start(Stage stage) {
@@ -29,20 +28,9 @@ public class EndCard {
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(_ -> returnToMainMenu(stage));
 
-        FileInputStream input;
-        try {
-            input = new FileInputStream("src/Assets/EndCardBG.PNG");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        Image image = new Image(input);
-
-        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundimage);
-
         VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
         menuOptions.setAlignment(Pos.CENTER);
-        menuOptions.setBackground(background);
+        menuOptions.setBackground(loadBackground());
 
         base.setCenter(menuOptions);
 }
@@ -67,5 +55,16 @@ public class EndCard {
 }
     private void exit(Stage stage){
         System.exit(0);
+    }
+
+    private Background loadBackground(){
+        try(FileInputStream input = new FileInputStream("src/Assets/EndCardBG.PNG")){
+            Image image = new Image(input);
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            return new Background(backgroundImage);
+        } catch(Exception e){
+            System.err.println("Failed to load background image.");
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+        }
     }
 }

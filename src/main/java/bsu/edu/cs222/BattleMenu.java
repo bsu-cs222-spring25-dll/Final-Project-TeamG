@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class BattleMenu {
     public void start(Stage stage) {
@@ -18,20 +17,9 @@ public class BattleMenu {
         Button endCardButton = new Button("Go to end card menu");
         endCardButton.setOnAction(_ -> openEndCard((stage)));
 
-        FileInputStream input;//Added
-        try {
-            input = new FileInputStream("src/Assets/BattleMenuSketchBG.jpg");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        javafx.scene.image.Image image = new Image(input);
-
-        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundimage);
-
         VBox menuOptions = new VBox(15.0, endCardButton);
         menuOptions.setStyle("-fx-alignment: bottom-right;");
-        menuOptions.setBackground(background);
+        menuOptions.setBackground(loadBackground());
 
         Scene scene = new Scene(base, 800, 600);
         stage.setScene(scene);
@@ -48,5 +36,16 @@ public class BattleMenu {
             throw new RuntimeException(e);
         }
         stage.close();
+    }
+
+    private Background loadBackground(){
+        try(FileInputStream input = new FileInputStream("src/Assets/BattleMenuSketchBG.jpg")){
+            Image image = new Image(input);
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            return new Background(backgroundImage);
+        } catch(Exception e){
+            System.err.println("Failed to load background image.");
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+        }
     }
 }

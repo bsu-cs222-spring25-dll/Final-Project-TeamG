@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class PlayerChoiceMenu {
     String selectedDifficulty = " ";
@@ -26,20 +25,9 @@ public class PlayerChoiceMenu {
         Button startBattleButton = new Button("Start Battle");
         startBattleButton.setOnAction(_ -> startBattle(stage));
 
-        FileInputStream input;
-        try {
-            input = new FileInputStream("src/Assets/CharacterSelectMenuBG.PNG");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        Image image = new Image(input);
-
-        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundimage);
-
         VBox menuOptions = new VBox(15, playerOneButton, playerTwoButton, startBattleButton, backButton);
         menuOptions.setAlignment(Pos.CENTER);
-        menuOptions.setBackground(background);
+        menuOptions.setBackground(loadBackground());
 
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
@@ -70,5 +58,16 @@ public class PlayerChoiceMenu {
         BattleMenu battleMenu = new BattleMenu();
         battleMenu.start(new Stage());
         stage.close();
+    }
+
+    private Background loadBackground(){
+        try(FileInputStream input = new FileInputStream("src/Assets/CharacterSelectMenuBG.PNG")){
+            Image image = new Image(input);
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            return new Background(backgroundImage);
+        } catch(Exception e){
+            System.err.println("Failed to load background image.");
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+        }
     }
 }

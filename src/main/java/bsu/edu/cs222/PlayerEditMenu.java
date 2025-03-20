@@ -10,7 +10,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class PlayerEditMenu {
     Label playerLabel = new Label("Player 1");
@@ -45,18 +44,6 @@ public class PlayerEditMenu {
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
 
-        FileInputStream input;
-        try {
-            input = new FileInputStream("src/Assets/CharacterEditBG.PNG");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        Image image = new Image(input);
-
-        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundimage);
-
         Scene scene = new Scene(base, 800, 600);
 
         stage.setScene(scene);
@@ -85,7 +72,7 @@ public class PlayerEditMenu {
         base.setLeft(playerSelection);
         base.setCenter(statsGrid);
         base.setBottom(buttonBox);
-        base.setBackground(background);
+        base.setBackground(loadBackground());
     }
 
     private void switchPlayer(int playerNumber){
@@ -102,6 +89,17 @@ public class PlayerEditMenu {
             throw new RuntimeException(e);
         }
         stage.close();
+    }
+
+    private Background loadBackground(){
+        try(FileInputStream input = new FileInputStream("src/Assets/CharacterEditBG.PNG")){
+            Image image = new Image(input);
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            return new Background(backgroundImage);
+        } catch(Exception e){
+            System.err.println("Failed to load background image.");
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+        }
     }
 }
 //Resources: https://github.com/jjenkov/javafx-examples/tree/main

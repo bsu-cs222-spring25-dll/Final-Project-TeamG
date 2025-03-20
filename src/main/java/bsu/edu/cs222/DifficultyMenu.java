@@ -7,23 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class DifficultyMenu {
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
-
-        FileInputStream input;
-        try {
-            input = new FileInputStream("src/Assets/DifficultyMenuBG.PNG");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        Image image = new Image(input);
-
-        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundimage);
 
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
@@ -42,10 +29,10 @@ public class DifficultyMenu {
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
 
         VBox menuOptions = new VBox(15, easyButton, mediumButton, hardButton, mainMenuButton);
-        menuOptions.setBackground(background);
         menuOptions.setAlignment(Pos.CENTER);
 
         base.setCenter(menuOptions);
+        base.setBackground(loadBackground());
     }
 
     private void selectDifficulty(String difficulty, Stage stage){
@@ -63,6 +50,17 @@ public class DifficultyMenu {
             throw new RuntimeException(e);
         }
         stage.close();
+    }
+
+    private Background loadBackground(){
+        try(FileInputStream input = new FileInputStream("src/Assets/DifficultyMenuBG.PNG")){
+            Image image = new Image(input);
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            return new Background(backgroundImage);
+        } catch(Exception e){
+            System.err.println("Failed to load background image.");
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+        }
     }
 }
 //Resources: https://github.com/jjenkov/javafx-examples/tree/main

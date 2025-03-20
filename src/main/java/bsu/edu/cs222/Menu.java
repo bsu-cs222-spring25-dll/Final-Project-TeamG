@@ -7,17 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class Menu extends Application {
-    public void start(Stage primaryStage) throws FileNotFoundException {
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("RPG Battle");
-
-        FileInputStream input = new FileInputStream("src/Assets/MainMenuBG.PNG");//Added
-        Image image = new Image(input);
-
-        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundimage);
 
         BorderPane base = new BorderPane();
 
@@ -36,7 +29,7 @@ public class Menu extends Application {
 
         VBox menuBox = new VBox(15.0, fightMonsterButton, editPlayerButton);
         menuBox.setStyle("-fx-alignment: center;");
-        menuBox.setBackground(background);
+        menuBox.setBackground(loadBackground());
         StackPane exitPane = new StackPane(exitButton);
         exitPane.setStyle("-fx-alignment: top-right;");
 
@@ -60,6 +53,17 @@ public class Menu extends Application {
         PlayerEditMenu playerEditMenu = new PlayerEditMenu();
         playerEditMenu.start(new Stage());
         primaryStage.close();
+    }
+
+    private Background loadBackground(){
+        try(FileInputStream input = new FileInputStream("src/Assets/MainMenuBG.PNG")){
+            Image image = new Image(input);
+            BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            return new Background(backgroundImage);
+        } catch(Exception e){
+            System.err.println("Failed to load background image.");
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+        }
     }
 
     public static void main(String[] args){
