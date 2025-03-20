@@ -23,13 +23,13 @@ public class EndCard {
         Button restartButton = new Button("Do you wish to restart?");
 
         Button backMenuButton = new Button("Return to main menu?");
-        backMenuButton.setOnAction(e -> returnToMainMenu(stage));
+        backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
 
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-        exitButton.setOnAction(e -> returnToMainMenu(stage));
+        exitButton.setOnAction(_ -> returnToMainMenu(stage));
 
-        FileInputStream input = null;
+        FileInputStream input;
         try {
             input = new FileInputStream("src/Assets/EndCardBG.PNG");
         } catch (FileNotFoundException e) {
@@ -69,15 +69,3 @@ public class EndCard {
         System.exit(0);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

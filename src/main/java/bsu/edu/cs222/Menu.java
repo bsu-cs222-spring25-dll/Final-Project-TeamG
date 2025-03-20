@@ -25,14 +25,14 @@ public class Menu extends Application {
 
         Button fightMonsterButton = new Button("Fight Monster");
 
-        fightMonsterButton.setOnAction(e -> openDifficultyMenu(primaryStage));
+        fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
 
         Button editPlayerButton = new Button("Edit Player");
-        editPlayerButton.setOnAction(e -> openPlayerEditMenu(primaryStage));
+        editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
 
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-        exitButton.setOnAction(e -> primaryStage.close());
+        exitButton.setOnAction(_ -> primaryStage.close());
 
         VBox menuBox = new VBox(15.0, fightMonsterButton, editPlayerButton);
         menuBox.setStyle("-fx-alignment: center;");

@@ -45,12 +45,13 @@ public class PlayerEditMenu {
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
 
-        FileInputStream input = null; //Added
+        FileInputStream input;
         try {
             input = new FileInputStream("src/Assets/CharacterEditBG.PNG");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
         Image image = new Image(input);
 
         BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
@@ -64,9 +65,9 @@ public class PlayerEditMenu {
         titleBox.setAlignment(Pos.CENTER);
         playerSelection.setAlignment(Pos.CENTER_LEFT);
 
-        playerOneButton.setOnAction(e -> switchPlayer(1));
-        playerTwoButton.setOnAction(e -> switchPlayer(2));
-        mainMenuButton.setOnAction(e -> returnToMainMenu(stage));
+        playerOneButton.setOnAction(_ -> switchPlayer(1));
+        playerTwoButton.setOnAction(_ -> switchPlayer(2));
+        mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
 
         statsGrid.setVgap(10.0);
         statsGrid.setHgap(10.0);

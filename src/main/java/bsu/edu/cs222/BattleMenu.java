@@ -16,9 +16,9 @@ public class BattleMenu {
         base.setStyle("-fx-background-color: #6badce;");
 
         Button endCardButton = new Button("Go to end card menu");
-        endCardButton.setOnAction(e -> openEndCard((stage)));
+        endCardButton.setOnAction(_ -> openEndCard((stage)));
 
-        FileInputStream input = null;//Added
+        FileInputStream input;//Added
         try {
             input = new FileInputStream("src/Assets/BattleMenuSketchBG.jpg");
         } catch (FileNotFoundException e) {

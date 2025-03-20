@@ -17,16 +17,16 @@ public class PlayerChoiceMenu {
         stage.setTitle("Player Choice");
 
         Button playerOneButton = new Button("Player One");
-        playerOneButton.setOnAction(e -> selectPlayer("Player One"));
+        playerOneButton.setOnAction(_ -> selectPlayer("Player One"));
         Button playerTwoButton = new Button("Player Two");
-        playerTwoButton.setOnAction(e -> selectPlayer("Player Two"));
+        playerTwoButton.setOnAction(_ -> selectPlayer("Player Two"));
 
         Button backButton = new Button("Back to Difficulty");
-        backButton.setOnAction(e -> returnToDifficultyMenu(stage));
+        backButton.setOnAction(_ -> returnToDifficultyMenu(stage));
         Button startBattleButton = new Button("Start Battle");
-        startBattleButton.setOnAction(e -> startBattle(stage));
+        startBattleButton.setOnAction(_ -> startBattle(stage));
 
-        FileInputStream input = null;
+        FileInputStream input;
         try {
             input = new FileInputStream("src/Assets/CharacterSelectMenuBG.PNG");
         } catch (FileNotFoundException e) {

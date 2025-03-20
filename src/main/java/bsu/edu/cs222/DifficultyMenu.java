@@ -13,7 +13,7 @@ public class DifficultyMenu {
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 
-        FileInputStream input = null;
+        FileInputStream input;
         try {
             input = new FileInputStream("src/Assets/DifficultyMenuBG.PNG");
         } catch (FileNotFoundException e) {
@@ -33,13 +33,13 @@ public class DifficultyMenu {
         stage.show();
 
         Button easyButton = new Button("Easy");
-        easyButton.setOnAction(e -> selectDifficulty("Easy", stage));
+        easyButton.setOnAction(_ -> selectDifficulty("Easy", stage));
         Button mediumButton = new Button("Medium");
-        mediumButton.setOnAction(e -> selectDifficulty("Medium", stage));
+        mediumButton.setOnAction(_ -> selectDifficulty("Medium", stage));
         Button hardButton = new Button("Hard");
-        hardButton.setOnAction(e -> selectDifficulty("Hard", stage));
+        hardButton.setOnAction(_ -> selectDifficulty("Hard", stage));
         Button mainMenuButton = new Button("Back to Main Menu");
-        mainMenuButton.setOnAction(e -> returnToMainMenu(stage));
+        mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
 
         VBox menuOptions = new VBox(15, easyButton, mediumButton, hardButton, mainMenuButton);
         menuOptions.setBackground(background);
