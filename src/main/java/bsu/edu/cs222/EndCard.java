@@ -34,11 +34,21 @@ public class EndCard {
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(e -> returnToMainMenu(stage));
 
-    //Background background = new Background(backgroundimage);
+        FileInputStream input = null;//Added
+        try {
+            input = new FileInputStream("src/Assets/EndCardBG.PNG");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Image image = new Image(input);
+
+        BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundimage);
+
 
         VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
         menuOptions.setAlignment(Pos.CENTER);
-    //menuOptions.setBackground(background);
+        menuOptions.setBackground(background);
 
 
 
