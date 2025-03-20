@@ -3,10 +3,8 @@ package bsu.edu.cs222;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,11 +16,6 @@ public class PlayerChoiceMenu {
     public void start(Stage stage) {
         stage.setTitle("Player Choice");
 
-        //Label title = new Label("Choose Enemy");
-        //title.setFont(new Font("Times New Roman", 60));
-        //Label difficultyLabel = new Label("Difficulty: " + selectedDifficulty);
-        //difficultyLabel.setFont(new Font("Times New Roman", 40));
-
         Button playerOneButton = new Button("Player One");
         playerOneButton.setOnAction(e -> selectPlayer("Player One"));
         Button playerTwoButton = new Button("Player Two");
@@ -33,7 +26,7 @@ public class PlayerChoiceMenu {
         Button startBattleButton = new Button("Start Battle");
         startBattleButton.setOnAction(e -> startBattle(stage));
 
-        FileInputStream input = null;//Added
+        FileInputStream input = null;
         try {
             input = new FileInputStream("src/Assets/CharacterSelectMenuBG.PNG");
         } catch (FileNotFoundException e) {

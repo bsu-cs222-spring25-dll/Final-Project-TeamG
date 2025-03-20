@@ -13,7 +13,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class PlayerEditMenu {
-    //variables
     Label playerLabel = new Label("Player 1");
     Label hpLabel = new Label("HP: ");
     Label attackLabel = new Label("Attack: ");
@@ -46,7 +45,6 @@ public class PlayerEditMenu {
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
 
-        //Importing the actual image to be called upon
         FileInputStream input = null; //Added
         try {
             input = new FileInputStream("src/Assets/CharacterEditBG.PNG");

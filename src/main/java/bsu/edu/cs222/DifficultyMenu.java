@@ -13,12 +13,13 @@ public class DifficultyMenu {
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 
-        FileInputStream input = null;//Added
+        FileInputStream input = null;
         try {
             input = new FileInputStream("src/Assets/DifficultyMenuBG.PNG");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
         Image image = new Image(input);
 
         BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
@@ -41,7 +42,7 @@ public class DifficultyMenu {
         mainMenuButton.setOnAction(e -> returnToMainMenu(stage));
 
         VBox menuOptions = new VBox(15, easyButton, mediumButton, hardButton, mainMenuButton);
-        menuOptions.setBackground(background); // adding image background
+        menuOptions.setBackground(background);
         menuOptions.setAlignment(Pos.CENTER);
 
         base.setCenter(menuOptions);

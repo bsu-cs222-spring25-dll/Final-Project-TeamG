@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-
 public class EndCard {
     public void start(Stage stage) {
         stage.setTitle("End Card");
@@ -30,7 +29,7 @@ public class EndCard {
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(e -> returnToMainMenu(stage));
 
-        FileInputStream input = null;//Added
+        FileInputStream input = null;
         try {
             input = new FileInputStream("src/Assets/EndCardBG.PNG");
         } catch (FileNotFoundException e) {
@@ -41,16 +40,12 @@ public class EndCard {
         BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
         Background background = new Background(backgroundimage);
 
-
         VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
         menuOptions.setAlignment(Pos.CENTER);
         menuOptions.setBackground(background);
 
-
-
         base.setCenter(menuOptions);
 }
-
     //Restart function will be fleshed out during development of the battle functions
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
@@ -60,8 +55,6 @@ public class EndCard {
         throw new RuntimeException(e);
     }
     stage.close();
-
-
 }
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
@@ -74,8 +67,8 @@ public class EndCard {
 }
     private void exit(Stage stage){
         System.exit(0);
-}
     }
+}
 
 
 
