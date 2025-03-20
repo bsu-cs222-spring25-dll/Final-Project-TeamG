@@ -3,16 +3,12 @@ package bsu.edu.cs222;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileInputStream;
 
-import java.awt.*;
 
 public class EndCard {
     public void start(Stage stage) {
@@ -54,6 +50,8 @@ public class EndCard {
 
         base.setCenter(menuOptions);
 }
+
+    //Restart function will be fleshed out during development of the battle functions
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         try {

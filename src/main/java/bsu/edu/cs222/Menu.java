@@ -30,6 +30,8 @@ public class Menu extends Application {
         base.setStyle("-fx-background-color: #6badce;");
 
         Button fightMonsterButton = new Button("Fight Monster");
+
+        //Keeping comments here for later work with changing appearance of buttons
         //fightMonsterButton.setMaxSize(150,150);
         //FileInputStream fightMonsterButtonImageInput = new FileInputStream("src/Assets/ButtonTwo.PNG");//Added
 
@@ -51,7 +53,7 @@ public class Menu extends Application {
 
         VBox menuBox = new VBox(15.0, fightMonsterButton, editPlayerButton);
         menuBox.setStyle("-fx-alignment: center;");
-        menuBox.setBackground(background); // adding image background?
+        menuBox.setBackground(background); // adding image background
         StackPane exitPane = new StackPane(exitButton);
         exitPane.setStyle("-fx-alignment: top-right;");
 

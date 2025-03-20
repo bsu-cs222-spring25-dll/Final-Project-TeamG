@@ -5,12 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-//import bsu.edu.cs222.Menu;
 
 public class BattleMenu {
     public void start(Stage stage) {
