@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 
 public class PlayerChoiceMenu {
     String selectedDifficulty = " ";
-    String selectedEnemy = " ";
+    String selectedPlayer = " ";
 
     public void start(Stage stage) {
         stage.setTitle("Player Choice");
@@ -23,10 +23,10 @@ public class PlayerChoiceMenu {
         //Label difficultyLabel = new Label("Difficulty: " + selectedDifficulty);
         //difficultyLabel.setFont(new Font("Times New Roman", 40));
 
-        Button enemyOneButton = new Button("Character One");
-        enemyOneButton.setOnAction(e -> selectEnemy("Character One"));
-        Button enemyTwoButton = new Button("Character Two");
-        enemyTwoButton.setOnAction(e -> selectEnemy("Character Two"));
+        Button playerOneButton = new Button("Player One");
+        playerOneButton.setOnAction(e -> selectPlayer("Player One"));
+        Button playerTwoButton = new Button("Player Two");
+        playerTwoButton.setOnAction(e -> selectPlayer("Player Two"));
 
         Button backButton = new Button("Back to Difficulty");
         backButton.setOnAction(e -> returnToDifficultyMenu(stage));
@@ -44,7 +44,7 @@ public class PlayerChoiceMenu {
         BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT);
         Background background = new Background(backgroundimage);
 
-        VBox menuOptions = new VBox(15, enemyOneButton, enemyTwoButton, startBattleButton, backButton);
+        VBox menuOptions = new VBox(15, playerOneButton, playerTwoButton, startBattleButton, backButton);
         menuOptions.setAlignment(Pos.CENTER);
         menuOptions.setBackground(background);
 
@@ -57,9 +57,9 @@ public class PlayerChoiceMenu {
         stage.show();
     }
 
-    private void selectEnemy(String enemy){
-        selectedEnemy = enemy;
-        System.out.println("Selected Enemy: " + enemy);
+    private void selectPlayer(String player){
+        selectedPlayer = player;
+        System.out.println("Selected player: " + player);
     }
 
     private void returnToDifficultyMenu(Stage stage){
@@ -69,11 +69,11 @@ public class PlayerChoiceMenu {
     }
 
     private void startBattle(Stage stage){
-        if(selectedEnemy.isEmpty()){
-            System.out.println("Please select and enemy before battle...");
+        if(selectedPlayer.isEmpty()){
+            System.out.println("Please select a player before battle...");
             return;
         }
-        System.out.println("Starting battle with " + selectedEnemy + " on " + selectedDifficulty + " difficulty.");
+        System.out.println("Starting battle with " + selectedPlayer + " on " + selectedDifficulty + " difficulty.");
         BattleMenu battleMenu = new BattleMenu();
         battleMenu.start(new Stage());
         stage.close();
