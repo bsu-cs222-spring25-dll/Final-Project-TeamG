@@ -20,13 +20,14 @@ public class EndCard {
         stage.show();
 
         Button restartButton = new Button("Do you wish to restart?");
+        restartButton.setOnAction(_ -> restart(stage));
 
         Button backMenuButton = new Button("Return to main menu?");
         backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
 
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-        exitButton.setOnAction(_ -> returnToMainMenu(stage));
+        exitButton.setOnAction(_ -> exit());
 
         VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
         menuOptions.setAlignment(Pos.CENTER);
@@ -34,7 +35,7 @@ public class EndCard {
 
         base.setCenter(menuOptions);
 }
-    //Restart function will be fleshed out during development of the battle functions
+
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         try {
@@ -44,6 +45,7 @@ public class EndCard {
     }
     stage.close();
 }
+
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
     try {
@@ -53,7 +55,8 @@ public class EndCard {
     }
     stage.close();
 }
-    private void exit(Stage stage){
+
+    private void exit(){
         System.exit(0);
     }
 

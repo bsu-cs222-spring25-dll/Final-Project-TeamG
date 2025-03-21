@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 
 public class DifficultyMenu {
     private String selectedDifficulty;
+
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 

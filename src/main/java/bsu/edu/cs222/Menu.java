@@ -1,10 +1,13 @@
 package bsu.edu.cs222;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
@@ -16,20 +19,25 @@ public class Menu extends Application {
 
         base.setStyle("-fx-background-color: #6badce;");
 
-        Button fightMonsterButton = new Button("Fight Monster");
-
+        Button fightMonsterButton = new Button("Fight Enemy");
+        fightMonsterButton.setPrefSize(150, 55);
+        fightMonsterButton.setFont(Font.font("Times New Roman", 20.0));
         fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
 
         Button editPlayerButton = new Button("Edit Player");
+        editPlayerButton.setPrefSize(150,55);
+        editPlayerButton.setFont(Font.font("Times New Roman", 20.0));
         editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
 
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(_ -> primaryStage.close());
 
-        VBox menuBox = new VBox(15.0, fightMonsterButton, editPlayerButton);
-        menuBox.setStyle("-fx-alignment: center;");
+        VBox menuBox = new VBox(20.0, fightMonsterButton, editPlayerButton);
+        menuBox.setAlignment(Pos.BASELINE_CENTER);
+        menuBox.setPadding(new Insets(320, 0, 0, 0));
         menuBox.setBackground(loadBackground());
+
         StackPane exitPane = new StackPane(exitButton);
         exitPane.setStyle("-fx-alignment: top-right;");
 
