@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 
 public class DifficultyMenu {
+    private String selectedDifficulty;
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 
@@ -35,11 +36,20 @@ public class DifficultyMenu {
         base.setBackground(loadBackground());
     }
 
-    private void selectDifficulty(String difficulty, Stage stage){
+    protected void selectDifficulty(String difficulty, Stage stage){
+        this.selectedDifficulty = difficulty;
         System.out.println("Difficulty selected: " + difficulty);
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         playerChoiceMenu.start(new Stage());
         stage.close();
+    }
+
+    public void selectDifficulty(String difficulty){
+        this.selectedDifficulty = difficulty;
+    }
+
+    public String getSelectedDifficulty(){
+        return selectedDifficulty;
     }
 
     private void returnToMainMenu(Stage stage){

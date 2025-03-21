@@ -38,9 +38,13 @@ public class PlayerChoiceMenu {
         stage.show();
     }
 
-    private void selectPlayer(String player){
-        selectedPlayer = player;
+    protected void selectPlayer(String player){
+        this.selectedPlayer = player;
         System.out.println("Selected player: " + player);
+    }
+
+    public String getSelectedPlayer(){
+        return selectedPlayer;
     }
 
     private void returnToDifficultyMenu(Stage stage){

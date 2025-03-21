@@ -75,7 +75,7 @@ public class PlayerEditMenu {
         base.setBackground(loadBackground());
     }
 
-    private void switchPlayer(int playerNumber){
+    protected void switchPlayer(int playerNumber){
         selectedPlayer = playerNumber;
         playerLabel.setText("Player " + playerNumber);
         System.out.println("Switched to Player " + playerNumber);
