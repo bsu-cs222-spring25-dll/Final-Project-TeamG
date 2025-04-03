@@ -1,5 +1,5 @@
 package bsu.edu.cs222.combat;
-
+//This was taken from a tutorial and is meant to serve as an example of how we should go about developing our battle system.
 import java.util.Scanner;
 
 public class GameLogic {
