@@ -14,6 +14,14 @@ public abstract class Character {
         this.winCount = winCount;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
     public abstract int attack();
     public abstract int defend();
 
