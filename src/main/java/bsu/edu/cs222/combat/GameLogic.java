@@ -268,7 +268,7 @@ public class GameLogic {
                     printHeading("You are already at full hp");
                 }
             }else{
-                //endbattle
+                //end battle
                 clearConsoleLogs();
                 if(act != 4){
                     printHeading("Player chose to end the battle");
