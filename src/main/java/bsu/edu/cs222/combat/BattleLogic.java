@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BattleLogic {
     //DifficultyMenu difficultyMenu = new DifficultyMenu();
 
-    enemy = getEnemyType();
+    //enemy = getEnemyType();
     EnemyHard enemy = new EnemyHard("Howard");
     PlayerOne player = new PlayerOne("PlayerOne");
     Scanner scanner = new Scanner(System.in);
@@ -24,9 +24,6 @@ public class BattleLogic {
     int enemyDefensePower = enemy.defend();
     int enemyHP = enemy.getHp();
 
-    public Character getEnemyType(){
-
-    }
 
 
 
