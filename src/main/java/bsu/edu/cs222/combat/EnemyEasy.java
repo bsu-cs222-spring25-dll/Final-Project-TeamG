@@ -1,13 +1,13 @@
 package bsu.edu.cs222.combat;
 
-public class EnemyMedium extends Character {
+public class EnemyEasy extends Character {
     public int attackPower;
     public int defensePower;
 
-    public EnemyMedium(String name){
+    public EnemyEasy(String name){
         super(name, 20);
-        this.attackPower = 10;
-        this.defensePower = 8;
+        this.attackPower = 5;
+        this.defensePower = 5;
     }
 
     @Override

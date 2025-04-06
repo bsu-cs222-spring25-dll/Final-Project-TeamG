@@ -1,11 +1,11 @@
 package bsu.edu.cs222.combat;
 
-public class EnemyMedium extends Character {
+public class PlayerTwo extends Character {
     public int attackPower;
     public int defensePower;
 
-    public EnemyMedium(String name){
-        super(name, 20);
+    public PlayerTwo(String name){
+        super(name, 75);
         this.attackPower = 10;
         this.defensePower = 8;
     }

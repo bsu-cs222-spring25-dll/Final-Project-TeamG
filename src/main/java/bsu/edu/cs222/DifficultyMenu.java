@@ -10,13 +10,11 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 
 public class DifficultyMenu {
-    @FXML
+    //@FXML
     private String selectedDifficulty;
-    //DataSingleton data = DataSingleton.getInstance();
 
 
-
-    @FXML
+    //@FXML
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 

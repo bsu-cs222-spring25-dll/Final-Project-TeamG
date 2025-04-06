@@ -1,6 +1,5 @@
 package bsu.edu.cs222.combat;
 
-//import bsu.edu.cs222.DifficultyMenu;
 import java.util.Scanner;
 
 public class BattleLogic {
