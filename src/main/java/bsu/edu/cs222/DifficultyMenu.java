@@ -46,10 +46,12 @@ public class DifficultyMenu {
     }
 
     public void selectDifficulty(String difficulty){
+
         this.selectedDifficulty = difficulty;
     }
 
     public String getSelectedDifficulty(){
+
         return selectedDifficulty;
     }
 

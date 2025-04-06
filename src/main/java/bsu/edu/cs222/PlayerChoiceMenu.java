@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 
 public class PlayerChoiceMenu {
-    String selectedDifficulty = " ";
-    String selectedPlayer = " ";
+    DifficultyMenu difficultyMenu = new DifficultyMenu();
+    String selectedDifficulty = difficultyMenu.getSelectedDifficulty();
+    String selectedPlayer = getSelectedPlayer();
 
     public void start(Stage stage) {
         stage.setTitle("Player Choice");

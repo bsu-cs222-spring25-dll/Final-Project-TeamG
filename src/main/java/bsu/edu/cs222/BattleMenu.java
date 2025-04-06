@@ -39,7 +39,7 @@ public class BattleMenu {
     }
 
     private Background loadBackground(){
-        try(FileInputStream input = new FileInputStream("src/Assets/BattleMenuSketchBG.jpg")){
+        try(FileInputStream input = new FileInputStream("src/Assets/" + "BattleMenuSketchBG" + ".jpg")){
             Image image = new Image(input);
             BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
             return new Background(backgroundImage);

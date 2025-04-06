@@ -1,13 +1,13 @@
 package bsu.edu.cs222;
 
-import bsu.edu.cs222.combat.Enemy;
+import bsu.edu.cs222.combat.EnemyHard;
 import org.junit.jupiter.api.Test;
 
 public class EnemyDisplayTest {
     @Test
     public void testEnemyDisplay() {
-        Enemy enemy = new Enemy("Bob", 0);
-        int enemyHP = enemy.getHp();
+        EnemyHard enemyHard = new EnemyHard("Bob");
+        int enemyHP = enemyHard.getHp();
         System.out.printf("%d", enemyHP);
     }
 }
