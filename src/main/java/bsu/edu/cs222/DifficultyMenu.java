@@ -1,5 +1,6 @@
 package bsu.edu.cs222;
 
+import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,8 +10,13 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 
 public class DifficultyMenu {
+    @FXML
     private String selectedDifficulty;
+    //DataSingleton data = DataSingleton.getInstance();
 
+
+
+    @FXML
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 
@@ -37,7 +43,9 @@ public class DifficultyMenu {
         base.setBackground(loadBackground());
     }
 
-    protected void selectDifficulty(String difficulty, Stage stage){
+
+
+    public void selectDifficulty(String difficulty, Stage stage){
         this.selectedDifficulty = difficulty;
         System.out.println("Difficulty selected: " + difficulty);
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
