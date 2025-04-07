@@ -6,8 +6,6 @@ public class DifficultySelection {
     Scanner scanner = new Scanner(System.in);
     String selectedDifficultyChoice;
     CharacterBase enemy;
-
-
     public String getUserDifficultyChoice() {
         System.out.println("Please select the difficulty of the monster you wish to face.\nEasy\nMedium\nHard\n");
         selectedDifficultyChoice = scanner.nextLine();
@@ -16,7 +14,6 @@ public class DifficultySelection {
 
     public String getSelectedDifficulty(){
         return selectedDifficultyChoice;
-
     }
 
     public void DifficultySelection(String selectedDifficultyChoice, CharacterBase enemy) {

@@ -11,21 +11,15 @@ import java.io.FileInputStream;
 import bsu.edu.cs222.combat.DifficultySelection;
 
 public class DifficultyMenu {
-
     private final DifficultySelection difficultySelection = new DifficultySelection();
     private String selectedDifficulty;
-
-
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
-
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
-
         Scene scene = new Scene(base,800, 600);
         stage.setScene(scene);
         stage.show();
-
         Button easyButton = new Button("Easy");
         easyButton.setOnAction(_ -> selectDifficulty("Easy", stage));
         Button mediumButton = new Button("Medium");
@@ -34,10 +28,8 @@ public class DifficultyMenu {
         hardButton.setOnAction(_ -> selectDifficulty("Hard", stage));
         Button mainMenuButton = new Button("Back to Main Menu");
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-
         VBox menuOptions = new VBox(15, easyButton, mediumButton, hardButton, mainMenuButton);
         menuOptions.setAlignment(Pos.CENTER);
-
         base.setCenter(menuOptions);
         base.setBackground(loadBackground());
     }
@@ -48,19 +40,16 @@ public class DifficultyMenu {
         //this.selectedDifficulty = difficulty;
         //System.out.println("Difficulty selected: " + difficulty);
         CharacterBase chosenEnemy = difficultySelection.getSelectedEnemy(difficulty);
-
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         playerChoiceMenu.start(new Stage(), chosenEnemy);
         stage.close();
     }
 
     public void selectDifficulty(String difficulty){
-
         this.selectedDifficulty = difficulty;
     }
 
     public String getSelectedDifficulty(){
-
         return selectedDifficulty;
     }
 

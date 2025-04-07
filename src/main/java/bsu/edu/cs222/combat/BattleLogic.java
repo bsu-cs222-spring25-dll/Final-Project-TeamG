@@ -3,35 +3,26 @@ package bsu.edu.cs222.combat;
 import java.util.Scanner;
 
 public class BattleLogic {
-
     DifficultySelection difficultySelection = new DifficultySelection();
     String difficultychoice = difficultySelection.getUserDifficultyChoice();
     CharacterBase enemy = difficultySelection.getSelectedEnemy(difficultychoice);
-
     PlayerSelection playerSelection = new PlayerSelection();
     String playerChoice = playerSelection.getPromptPlayerUserChoice();
     CharacterBase player = playerSelection.getSelectedPlayer(playerChoice);
-
     Scanner scanner = new Scanner(System.in);
-
     int damage;
-
     String playerName = player.getName();
     String enemyName = enemy.getName();
-
     int playerAttackPower = player.attack();
     int playerDefensePower = player.defend();
     int playerHP = player.getHp();
-
     int enemyAttackPower = enemy.attack();
     int enemyDefensePower = enemy.defend();
     int enemyHP = enemy.getHp();
 
     public void startRound(){
-
         boolean battleKeepGoing = true;
         int playerChoice;
-
         System.out.printf("You've encountered %s ", enemyName);
         while(battleKeepGoing){
             System.out.println("What do you wish to do?\n1)Attack\n2)Defend\n");
@@ -51,7 +42,6 @@ public class BattleLogic {
                         battleKeepGoing = false;
                     }
                 }
-
             }
             else if(playerChoice == 2){
                 System.out.printf("\n%s defended!\n", playerName);
@@ -64,8 +54,6 @@ public class BattleLogic {
                     System.out.printf("\n%s has been slain and succumbs to the depths of despair...\nThe battle is over.\n", playerName);
                     battleKeepGoing = false;
                 }
-
-
             }
             else{
                 System.out.println("That wasn't a valid command, but the battle ends....\n");
@@ -94,11 +82,8 @@ public class BattleLogic {
                 enemyHP = 0;
             }
             else{
-
             }
-
         }
-
         return enemyHP;
     }
 
@@ -126,6 +111,4 @@ public class BattleLogic {
         }
         return playerHP;
     }
-
-
 }

@@ -13,37 +13,27 @@ import java.io.FileInputStream;
 public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
     String selectedDifficulty = difficultyMenu.getSelectedDifficulty();
-
     PlayerSelection playerSelection = new PlayerSelection();
-
-
     String selectedPlayer;
     CharacterBase enemy;
-
     CharacterBase chosenPlayer;
-
     public void start(Stage stage, CharacterBase enemy) {
         this.enemy = enemy;
         stage.setTitle("Player Choice");
-
         Button playerOneButton = new Button("Player One");
         playerOneButton.setOnAction(_ -> selectPlayer("Player One"));
         Button playerTwoButton = new Button("Player Two");
         playerTwoButton.setOnAction(_ -> selectPlayer("Player Two"));
-
         Button backButton = new Button("Back to Difficulty");
         backButton.setOnAction(_ -> returnToDifficultyMenu(stage));
         Button startBattleButton = new Button("Start Battle");
         startBattleButton.setOnAction(_ -> startBattle(stage));
-
         VBox menuOptions = new VBox(15, playerOneButton, playerTwoButton, startBattleButton, backButton);
         menuOptions.setAlignment(Pos.CENTER);
         menuOptions.setBackground(loadBackground());
-
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
         base.setCenter(menuOptions);
-
         Scene scene = new Scene(base, 800, 600);
         stage.setScene(scene);
         stage.show();

@@ -6,13 +6,11 @@ public class PlayerSelection {
     Scanner scanner = new Scanner(System.in);
     String userPlayerChoice;
     CharacterBase player;
-
     public String getPromptPlayerUserChoice(){
         System.out.println("Please select the player you want\nPlayer One\nPlayer Two\n");
         userPlayerChoice = scanner.nextLine();
         return userPlayerChoice;
     }
-
     public CharacterBase getSelectedPlayer(String userPlayerChoice){
         //getPromptPlayerUserChoice();
         if(userPlayerChoice.equals("Player One")){
@@ -27,5 +25,4 @@ public class PlayerSelection {
     public CharacterBase getPlayer(){
         return player;
     }
-
 }

@@ -15,21 +15,16 @@ public class BattleMenu {
         this.enemy = enemy;
         this.player = player;
         stage.setTitle("Battle!");
-
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
-
         Button endCardButton = new Button("Go to end card menu");
         endCardButton.setOnAction(_ -> openEndCard((stage)));
-
         VBox menuOptions = new VBox(15.0, endCardButton);
         menuOptions.setStyle("-fx-alignment: bottom-right;");
         menuOptions.setBackground(loadBackground());
-
         Scene scene = new Scene(base, 800, 600);
         stage.setScene(scene);
         stage.show();
-
         base.setCenter(menuOptions);
     }
 

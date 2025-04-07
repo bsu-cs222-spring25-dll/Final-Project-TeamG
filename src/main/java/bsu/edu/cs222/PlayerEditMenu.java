@@ -17,58 +17,42 @@ public class PlayerEditMenu {
     Label attackLabel = new Label("Attack: ");
     Label defenseLabel = new Label("Defense: ");
     Label title = new Label("Edit Player");
-
     int selectedPlayer = 1;
-
     Button playerOneButton = new Button("Player One");
     Button playerTwoButton = new Button("Player Two");
     Button saveButton = new Button("Save changes");
     Button defaultStatButton = new Button("Return to Default Stats");
     Button mainMenuButton = new Button("Back to Main Menu");
-
     TextField hpInput = new TextField();
     TextField attackInput = new TextField();
     TextField defenseInput = new TextField();
-
     GridPane statsGrid = new GridPane();
-
     VBox titleBox = new VBox(20, playerLabel);
     VBox playerSelection = new VBox(20, playerOneButton, playerTwoButton);
-
     HBox buttonBox = new HBox(20, saveButton, defaultStatButton, mainMenuButton);
-
     public void start(Stage stage) {
         stage.setTitle("Edit Player");
-
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
-
         Scene scene = new Scene(base, 800, 600);
-
         title.setStyle("-fx-text-fill: white;");
         playerLabel.setStyle("-fx-text-fill: white;");
         hpLabel.setStyle("-fx-text-fill: white;");
         attackLabel.setStyle("-fx-text-fill: white;");
         defenseLabel.setStyle("-fx-text-fill: white;");
-
         playerLabel.setFont(new Font("Times New Roman", 45));
-
         hpInput.setPrefSize(50, 50);
         attackInput.setPrefSize(50, 50);
         defenseInput.setPrefSize(50, 50);
-
         stage.setScene(scene);
         stage.show();
-
         titleBox.setAlignment(Pos.CENTER);
         playerSelection.setAlignment(Pos.CENTER_LEFT);
-
         playerOneButton.setOnAction(_ -> switchPlayer(1));
         playerOneButton.setPrefSize(100, 70);
         playerTwoButton.setOnAction(_ -> switchPlayer(2));
         playerTwoButton.setPrefSize(100, 70);
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-
         statsGrid.setVgap(20.0);
         statsGrid.setHgap(20.0);
         statsGrid.setAlignment(Pos.CENTER);
@@ -78,9 +62,7 @@ public class PlayerEditMenu {
         statsGrid.add(attackInput, 1, 1);
         statsGrid.add(defenseLabel, 0, 2);
         statsGrid.add(defenseInput, 1, 2);
-
         buttonBox.setAlignment(Pos.BOTTOM_LEFT);
-
         base.setTop(titleBox);
         base.setLeft(playerSelection);
         base.setCenter(statsGrid);

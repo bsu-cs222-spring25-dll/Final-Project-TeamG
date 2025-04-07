@@ -14,28 +14,21 @@ public class EndCard {
     public void start(Stage stage, CharacterBase enemy) {
         this.enemy = enemy;
         stage.setTitle("End Card");
-
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
-
         Scene scene = new Scene(base, 800, 600);
         stage.setScene(scene);
         stage.show();
-
         Button restartButton = new Button("Do you wish to restart?");
         restartButton.setOnAction(_ -> restart(stage));
-
         Button backMenuButton = new Button("Return to main menu?");
         backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
         exitButton.setOnAction(_ -> exit());
-
         VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
         menuOptions.setAlignment(Pos.CENTER);
         menuOptions.setBackground(loadBackground());
-
         base.setCenter(menuOptions);
 }
 
