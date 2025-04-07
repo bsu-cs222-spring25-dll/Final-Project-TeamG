@@ -3,11 +3,13 @@ package bsu.edu.cs222.combat;
 import java.util.Scanner;
 
 public class BattleLogic {
+
     DifficultySelection difficultySelection = new DifficultySelection();
-    Character enemy = difficultySelection.getSelectedEnemy();
+    String difficultychoice = difficultySelection.getUserDifficultyChoice();
+    CharacterBase enemy = difficultySelection.getSelectedEnemy(difficultychoice);
 
     PlayerSelection playerSelection = new PlayerSelection();
-    Character player = playerSelection.getSelectedPlayer();
+    CharacterBase player = playerSelection.getSelectedPlayer();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -23,12 +25,6 @@ public class BattleLogic {
     int enemyAttackPower = enemy.attack();
     int enemyDefensePower = enemy.defend();
     int enemyHP = enemy.getHp();
-
-
-    public static void main(String[] args) {
-        BattleLogic battle = new BattleLogic();
-        battle.startRound();
-    }
 
     public void startRound(){
 

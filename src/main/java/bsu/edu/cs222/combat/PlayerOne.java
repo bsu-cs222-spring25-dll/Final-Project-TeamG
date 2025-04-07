@@ -1,6 +1,6 @@
 package bsu.edu.cs222.combat;
 
-public class PlayerOne extends Character {
+public class PlayerOne extends CharacterBase {
     public int attackPower;
     public int defensePower;
 

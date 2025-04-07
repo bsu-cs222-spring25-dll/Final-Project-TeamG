@@ -1,5 +1,6 @@
 package bsu.edu.cs222;
 
+import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,12 +9,14 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
-public class PlayerChoiceMenu {
+public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
     String selectedDifficulty = difficultyMenu.getSelectedDifficulty();
     String selectedPlayer = getSelectedPlayer();
+    CharacterBase enemy;
 
-    public void start(Stage stage) {
+    public void start(Stage stage, CharacterBase enemy) {
+        this.enemy = enemy;
         stage.setTitle("Player Choice");
 
         Button playerOneButton = new Button("Player One");
@@ -59,9 +62,9 @@ public class PlayerChoiceMenu {
             System.out.println("Please select a player before battle...");
             return;
         }
-        System.out.println("Starting battle with " + selectedPlayer + " on " + selectedDifficulty + " difficulty.");
+        System.out.println("Starting battle with " + selectedPlayer + " on " + enemy.getName() + " difficulty.");
         BattleMenu battleMenu = new BattleMenu();
-        battleMenu.start(new Stage());
+        battleMenu.start(new Stage(), enemy);
         stage.close();
     }
 

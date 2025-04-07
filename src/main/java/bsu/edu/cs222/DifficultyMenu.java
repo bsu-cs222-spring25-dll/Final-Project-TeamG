@@ -1,6 +1,6 @@
 package bsu.edu.cs222;
 
-import javafx.fxml.FXML;
+import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,8 +8,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
+import bsu.edu.cs222.combat.DifficultySelection;
 
 public class DifficultyMenu {
+
+    private final DifficultySelection difficultySelection = new DifficultySelection();
     //@FXML
     private String selectedDifficulty;
 
@@ -44,10 +47,12 @@ public class DifficultyMenu {
 
 
     public void selectDifficulty(String difficulty, Stage stage){
-        this.selectedDifficulty = difficulty;
-        System.out.println("Difficulty selected: " + difficulty);
+        //this.selectedDifficulty = difficulty;
+        //System.out.println("Difficulty selected: " + difficulty);
+        CharacterBase chosenEnemy = difficultySelection.getSelectedEnemy(difficulty);
+
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
-        playerChoiceMenu.start(new Stage());
+        playerChoiceMenu.start(new Stage(), chosenEnemy);
         stage.close();
     }
 

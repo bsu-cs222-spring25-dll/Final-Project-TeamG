@@ -1,6 +1,6 @@
 package bsu.edu.cs222.combat;
 
-public class EnemyMedium extends Character {
+public class EnemyMedium extends CharacterBase {
     public int attackPower;
     public int defensePower;
 

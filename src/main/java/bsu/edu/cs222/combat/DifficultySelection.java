@@ -4,41 +4,41 @@ import java.util.Scanner;
 
 public class DifficultySelection {
     Scanner scanner = new Scanner(System.in);
-    String selectedDifficulty;
-    Character enemy;
+    String selectedDifficultyChoice;
+    CharacterBase enemy;
 
 
     public String getUserDifficultyChoice() {
         System.out.println("Please select the difficulty of the monster you wish to face.\nEasy\nMedium\nHard\n");
-        selectedDifficulty = scanner.nextLine();
-        return selectedDifficulty;
+        selectedDifficultyChoice = scanner.nextLine();
+        return selectedDifficultyChoice;
     }
 
     public String getSelectedDifficulty(){
-        return selectedDifficulty;
+        return selectedDifficultyChoice;
 
     }
 
-    public void DifficultySelection(String selectedDifficulty, Character enemy) {
-        this.selectedDifficulty = selectedDifficulty;
+    public void DifficultySelection(String selectedDifficultyChoice, CharacterBase enemy) {
+        this.selectedDifficultyChoice = selectedDifficultyChoice;
         this.enemy = enemy;
     }
 
-    public Character getSelectedEnemy(){
-        getUserDifficultyChoice();
-        if(selectedDifficulty.equals("Easy")){
+    public CharacterBase getSelectedEnemy(String selectedDifficultyChoice){
+        //getUserDifficultyChoice();
+        if(selectedDifficultyChoice.equals("Easy")){
             enemy = new EnemyEasy("Bunbun");
         }
-        else if(selectedDifficulty.equals("Medium")){
+        else if(selectedDifficultyChoice.equals("Medium")){
             enemy = new EnemyMedium("Gobbo");
         }
-        else if(selectedDifficulty.equals("Hard")){
+        else if(selectedDifficultyChoice.equals("Hard")){
             enemy = new EnemyHard("Howard");
         }
         return enemy;
     }
 
-    public Character getEnemyType(){
+    public CharacterBase getEnemyType(){
         return enemy;
     }
 }

@@ -1,5 +1,6 @@
 package bsu.edu.cs222;
 
+import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,7 +10,9 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 
 public class EndCard {
-    public void start(Stage stage) {
+    CharacterBase enemy;
+    public void start(Stage stage, CharacterBase enemy) {
+        this.enemy = enemy;
         stage.setTitle("End Card");
 
         BorderPane base = new BorderPane();
@@ -39,7 +42,7 @@ public class EndCard {
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         try {
-            playerChoiceMenu.start(new Stage());
+            playerChoiceMenu.start(new Stage(), enemy);
     } catch (Exception e) {
         throw new RuntimeException(e);
     }

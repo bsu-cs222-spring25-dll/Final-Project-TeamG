@@ -1,10 +1,10 @@
 package bsu.edu.cs222.combat;
 
-public abstract class Character {
+public abstract class CharacterBase {
     public String name;
     public int maxHp, Hp;
 
-    public Character(String name, int maxHp){
+    public CharacterBase(String name, int maxHp){
         this.name = name;
         this.maxHp = maxHp;
         this.Hp = maxHp;

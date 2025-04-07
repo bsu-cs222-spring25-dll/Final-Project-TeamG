@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class PlayerSelection {
     Scanner scanner = new Scanner(System.in);
     String userPlayerChoice;
-    Character player;
+    CharacterBase player;
 
     public String getPromptPlayerUserChoice(){
         System.out.println("Please select the player you want\nPlayer One\nPlayer Two\n");
@@ -13,7 +13,7 @@ public class PlayerSelection {
         return userPlayerChoice;
     }
 
-    public Character getSelectedPlayer(){
+    public CharacterBase getSelectedPlayer(){
         getPromptPlayerUserChoice();
         if(userPlayerChoice.equals("Player One")){
             player = new PlayerOne("Player One");
@@ -24,7 +24,7 @@ public class PlayerSelection {
         return player;
     }
 
-    public Character getPlayer(){
+    public CharacterBase getPlayer(){
         return player;
     }
 

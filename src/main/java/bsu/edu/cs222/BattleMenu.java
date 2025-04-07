@@ -1,5 +1,6 @@
 package bsu.edu.cs222;
 
+import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -8,7 +9,9 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 
 public class BattleMenu {
-    public void start(Stage stage) {
+    CharacterBase enemy;
+    public void start(Stage stage, CharacterBase enemy) {
+        this.enemy = enemy;
         stage.setTitle("Battle!");
 
         BorderPane base = new BorderPane();
@@ -31,7 +34,7 @@ public class BattleMenu {
     private void openEndCard(Stage stage){
         EndCard endCard = new EndCard();
         try {
-            endCard.start(new Stage());
+            endCard.start(new Stage(), enemy);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
