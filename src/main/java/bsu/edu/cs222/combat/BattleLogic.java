@@ -3,11 +3,12 @@ package bsu.edu.cs222.combat;
 import java.util.Scanner;
 
 public class BattleLogic {
-    //DifficultyMenu difficultyMenu = new DifficultyMenu();
+    DifficultySelection difficultySelection = new DifficultySelection();
+    Character enemy = difficultySelection.getSelectedEnemy();
 
-    //enemy = getEnemyType();
-    EnemyHard enemy = new EnemyHard("Howard");
-    PlayerOne player = new PlayerOne("PlayerOne");
+    PlayerSelection playerSelection = new PlayerSelection();
+    Character player = playerSelection.getSelectedPlayer();
+
     Scanner scanner = new Scanner(System.in);
 
     int damage;
@@ -24,9 +25,6 @@ public class BattleLogic {
     int enemyHP = enemy.getHp();
 
 
-
-
-
     public static void main(String[] args) {
         BattleLogic battle = new BattleLogic();
         battle.startRound();
@@ -37,7 +35,7 @@ public class BattleLogic {
         boolean battleKeepGoing = true;
         int playerChoice;
 
-        System.out.printf("You've encountered %s", enemyName);
+        System.out.printf("You've encountered %s ", enemyName);
         while(battleKeepGoing){
             System.out.println("What do you wish to do?\n1)Attack\n2)Defend\n");
             playerChoice = Integer.parseInt(scanner.nextLine());
@@ -52,7 +50,7 @@ public class BattleLogic {
                     enemyAttack();
                     System.out.printf("\n%s has %d health remaining.\n", playerName, playerHP);
                     if(playerHP == 0){
-                        System.out.printf("\n%s has been slain and succumbs to the depths of despair...\nThe battle is over.\n");
+                        System.out.printf("\n%s has been slain and succumbs to the depths of despair...\nThe battle is over.\n", playerName);
                         battleKeepGoing = false;
                     }
                 }
@@ -66,7 +64,7 @@ public class BattleLogic {
                 playerDefensePower = playerDefensePower/2;
                 System.out.printf("\n%s has %d health remaining.\n", playerName, playerHP);
                 if(playerHP == 0){
-                    System.out.printf("\n%s has been slain and succumbs to the depths of despair...\nThe battle is over.\n");
+                    System.out.printf("\n%s has been slain and succumbs to the depths of despair...\nThe battle is over.\n", playerName);
                     battleKeepGoing = false;
                 }
 

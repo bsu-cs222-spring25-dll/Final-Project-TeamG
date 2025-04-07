@@ -6,8 +6,8 @@ public class EnemyHard extends Character {
 
     public EnemyHard(String name){
         super(name, 20);
-        this.attackPower = 30;
-        this.defensePower = 12;
+        this.attackPower = 25;
+        this.defensePower = 5;
     }
 
     @Override

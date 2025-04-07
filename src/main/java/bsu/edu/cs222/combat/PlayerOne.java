@@ -5,8 +5,8 @@ public class PlayerOne extends Character {
     public int defensePower;
 
     public PlayerOne(String name){
-        super(name, 100);
-        this.attackPower = 10;
+        super(name, 25);
+        this.attackPower = 15;
         this.defensePower = 8;
     }
 
