@@ -31,7 +31,7 @@ Classes Created:
 
 
 ### Iteration 2
-This iteraion was implemention of test classes and a package that were created for menu displays for the program. 
+This iteration was implemention of test classes and a package that were created for menu displays for the program. 
 
 Test Classes Created: 
 - <p> PlayerChoiceMenuTest (A menu that pops up for the player to pick a character within the selection provided.) <br>
