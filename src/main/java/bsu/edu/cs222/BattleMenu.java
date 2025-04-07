@@ -10,8 +10,10 @@ import java.io.FileInputStream;
 
 public class BattleMenu {
     CharacterBase enemy;
-    public void start(Stage stage, CharacterBase enemy) {
+    CharacterBase player;
+    public void start(Stage stage, CharacterBase enemy, CharacterBase player) {
         this.enemy = enemy;
+        this.player = player;
         stage.setTitle("Battle!");
 
         BorderPane base = new BorderPane();

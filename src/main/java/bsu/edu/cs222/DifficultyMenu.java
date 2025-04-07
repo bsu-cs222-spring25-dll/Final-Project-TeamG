@@ -13,11 +13,9 @@ import bsu.edu.cs222.combat.DifficultySelection;
 public class DifficultyMenu {
 
     private final DifficultySelection difficultySelection = new DifficultySelection();
-    //@FXML
     private String selectedDifficulty;
 
 
-    //@FXML
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
 

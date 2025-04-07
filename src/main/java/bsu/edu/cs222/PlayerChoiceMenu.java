@@ -1,6 +1,7 @@
 package bsu.edu.cs222;
 
 import bsu.edu.cs222.combat.CharacterBase;
+import bsu.edu.cs222.combat.PlayerSelection;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,8 +13,14 @@ import java.io.FileInputStream;
 public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
     String selectedDifficulty = difficultyMenu.getSelectedDifficulty();
-    String selectedPlayer = getSelectedPlayer();
+
+    PlayerSelection playerSelection = new PlayerSelection();
+
+
+    String selectedPlayer;
     CharacterBase enemy;
+
+    CharacterBase chosenPlayer;
 
     public void start(Stage stage, CharacterBase enemy) {
         this.enemy = enemy;
@@ -43,8 +50,9 @@ public class PlayerChoiceMenu{
     }
 
     protected void selectPlayer(String player){
-        this.selectedPlayer = player;
-        System.out.println("Selected player: " + player);
+        //this.selectedPlayer = player;
+        chosenPlayer = playerSelection.getSelectedPlayer(player);
+        System.out.println("Selected player: " + chosenPlayer.getName());
     }
 
     public String getSelectedPlayer(){
@@ -58,13 +66,9 @@ public class PlayerChoiceMenu{
     }
 
     private void startBattle(Stage stage){
-        if(selectedPlayer.isEmpty()){
-            System.out.println("Please select a player before battle...");
-            return;
-        }
-        System.out.println("Starting battle with " + selectedPlayer + " on " + enemy.getName() + " difficulty.");
+        System.out.println("Starting battle with " + chosenPlayer.getName() + " on " + enemy.getName() + " difficulty.");
         BattleMenu battleMenu = new BattleMenu();
-        battleMenu.start(new Stage(), enemy);
+        battleMenu.start(new Stage(), enemy, chosenPlayer);
         stage.close();
     }
 
