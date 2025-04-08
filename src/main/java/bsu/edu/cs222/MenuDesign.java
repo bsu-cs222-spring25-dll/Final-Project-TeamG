@@ -23,7 +23,7 @@ public class MenuDesign {
     public static Button createPlayerButton(String text){
         Button button = new Button(text);
         button.setFont(new Font("Century", 15.0));
-        button.setPrefSize(100.0, 50.0);
+        button.setPrefSize(150.0, 50.0);
         return button;
     }
 

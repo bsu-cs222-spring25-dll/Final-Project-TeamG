@@ -17,7 +17,6 @@ public class PlayerEditMenu {
     Label hpLabel = createLabel("HP: ", 25);
     Label attackLabel = createLabel("Attack: ", 25);
     Label defenseLabel = createLabel("Defense: ", 25);
-    int selectedPlayer = 1;
     Button playerOneButton = createPlayerButton("Player One");
     Button playerTwoButton = createPlayerButton("Player Two");
     Button saveButton = createFunctionButton("Save changes");
@@ -32,6 +31,7 @@ public class PlayerEditMenu {
     HBox buttonBox = new HBox(20, saveButton, defaultStatButton, mainMenuButton);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
+    int selectedPlayer = 1;
 
     public void start(Stage stage) {
         stage.setTitle("Edit Player");

@@ -2,13 +2,15 @@ package bsu.edu.cs222;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import bsu.edu.cs222.combat.PlayerSelection;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
+
+import static bsu.edu.cs222.MenuDesign.*;
 
 public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
@@ -17,26 +19,28 @@ public class PlayerChoiceMenu{
     String selectedPlayer;
     CharacterBase enemy;
     CharacterBase chosenPlayer;
+    Pane layout = new Pane();
+    Scene scene = new Scene(layout, 800, 600);
+
     public void start(Stage stage, CharacterBase enemy) {
         this.enemy = enemy;
         stage.setTitle("Player Choice");
-        Button playerOneButton = new Button("Player One");
+        layout.setStyle("-fx-background-color: #6badce;");
+        Button playerOneButton = createPlayerButton("Player One");
         playerOneButton.setOnAction(_ -> selectPlayer("Player One"));
-        Button playerTwoButton = new Button("Player Two");
+        Button playerTwoButton = createPlayerButton("Player Two");
         playerTwoButton.setOnAction(_ -> selectPlayer("Player Two"));
-        Button backButton = new Button("Back to Difficulty");
+        Button backButton = createPlayerButton("Back to Difficulty");
         backButton.setOnAction(_ -> returnToDifficultyMenu(stage));
-        Button startBattleButton = new Button("Start Battle");
+        Button startBattleButton = createPlayerButton("Start Battle");
         startBattleButton.setOnAction(_ -> startBattle(stage));
-        VBox menuOptions = new VBox(15, playerOneButton, playerTwoButton, startBattleButton, backButton);
-        menuOptions.setAlignment(Pos.CENTER);
-        menuOptions.setBackground(loadBackground());
-        BorderPane base = new BorderPane();
-        base.setStyle("-fx-background-color: #6badce;");
-        base.setCenter(menuOptions);
-        Scene scene = new Scene(base, 800, 600);
+        VBox menuOptions = new VBox(20, playerOneButton, playerTwoButton, startBattleButton, backButton);
+        menuOptions.setLayoutX(300.0);
+        menuOptions.setLayoutY(250.0);
+        layout.getChildren().addAll(menuOptions);
         stage.setScene(scene);
         stage.show();
+        layout.setBackground(loadBackground());
     }
 
     protected void selectPlayer(String player){
@@ -69,7 +73,7 @@ public class PlayerChoiceMenu{
             return new Background(backgroundImage);
         } catch(Exception e){
             System.err.println("Failed to load background image.");
-            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+            return new Background(new BackgroundFill(Color.BLACK, null, null));
         }
     }
 }
