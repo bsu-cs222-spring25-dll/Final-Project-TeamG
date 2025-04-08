@@ -20,9 +20,9 @@ public class MenuDesign {
         return field;
     }
 
-    public static Button createPlayerButton(String text){
+    public static Button createPlayerButton(String text, int size){
         Button button = new Button(text);
-        button.setFont(new Font("Century", 15.0));
+        button.setFont(new Font("Century", size));
         button.setPrefSize(150.0, 50.0);
         return button;
     }

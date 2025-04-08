@@ -17,8 +17,8 @@ public class PlayerEditMenu {
     Label hpLabel = createLabel("HP: ", 25);
     Label attackLabel = createLabel("Attack: ", 25);
     Label defenseLabel = createLabel("Defense: ", 25);
-    Button playerOneButton = createPlayerButton("Player One");
-    Button playerTwoButton = createPlayerButton("Player Two");
+    Button playerOneButton = createPlayerButton("Player One", 15);
+    Button playerTwoButton = createPlayerButton("Player Two", 15);
     Button saveButton = createFunctionButton("Save changes");
     Button defaultStatButton = createFunctionButton("Return to Default Stats");
     Button mainMenuButton = createFunctionButton("Back to Main Menu");
