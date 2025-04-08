@@ -1,5 +1,6 @@
 package bsu.edu.cs222;
 
+import bsu.edu.cs222.menus.DifficultyMenu;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

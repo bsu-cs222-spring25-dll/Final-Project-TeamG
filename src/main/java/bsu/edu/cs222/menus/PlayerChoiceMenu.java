@@ -1,4 +1,4 @@
-package bsu.edu.cs222;
+package bsu.edu.cs222.menus;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import bsu.edu.cs222.combat.PlayerSelection;
@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
-import static bsu.edu.cs222.MenuDesign.*;
+import static bsu.edu.cs222.menus.MenuDesign.*;
 
 public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
@@ -43,7 +43,7 @@ public class PlayerChoiceMenu{
         layout.setBackground(loadBackground());
     }
 
-    protected void selectPlayer(String player){
+    public void selectPlayer(String player){
         //this.selectedPlayer = player;
         chosenPlayer = playerSelection.getSelectedPlayer(player);
         System.out.println("Selected player: " + chosenPlayer.getName());

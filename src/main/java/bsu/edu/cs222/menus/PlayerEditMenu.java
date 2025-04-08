@@ -1,4 +1,4 @@
-package bsu.edu.cs222;
+package bsu.edu.cs222.menus;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
-import static bsu.edu.cs222.MenuDesign.*;
+import static bsu.edu.cs222.menus.MenuDesign.*;
 
 public class PlayerEditMenu {
     Label playerLabel = createLabel("Player 1", 45);
@@ -61,7 +61,7 @@ public class PlayerEditMenu {
         layout.setBackground(loadBackground());
     }
 
-    protected void switchPlayer(int playerNumber){
+    public void switchPlayer(int playerNumber){
         selectedPlayer = playerNumber;
         playerLabel.setText("Player " + playerNumber);
         System.out.println("Switched to Player " + playerNumber);
