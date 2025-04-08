@@ -1,4 +1,4 @@
-package bsu.edu.cs222.menus;
+package bsu.edu.cs222;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Pos;
@@ -13,6 +13,7 @@ import bsu.edu.cs222.combat.DifficultySelection;
 public class DifficultyMenu {
     private final DifficultySelection difficultySelection = new DifficultySelection();
     private String selectedDifficulty;
+
     public void start(Stage stage) {
         stage.setTitle("Difficulty menu");
         BorderPane base = new BorderPane();
@@ -34,11 +35,9 @@ public class DifficultyMenu {
         base.setBackground(loadBackground());
     }
 
-
-
     public void selectDifficulty(String difficulty, Stage stage){
-        //this.selectedDifficulty = difficulty;
-        //System.out.println("Difficulty selected: " + difficulty);
+        this.selectedDifficulty = difficulty;
+        System.out.println("Difficulty selected: " + difficulty);
         CharacterBase chosenEnemy = difficultySelection.getSelectedEnemy(difficulty);
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         playerChoiceMenu.start(new Stage(), chosenEnemy);

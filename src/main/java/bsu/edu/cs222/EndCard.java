@@ -1,4 +1,4 @@
-package bsu.edu.cs222.menus;
+package bsu.edu.cs222;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Pos;
@@ -9,7 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
-import static bsu.edu.cs222.menus.MenuDesign.*;
+import static bsu.edu.cs222.MenuDesign.*;
 
 public class EndCard {
     CharacterBase enemy;

@@ -1,4 +1,4 @@
-package bsu.edu.cs222.menus;
+package bsu.edu.cs222;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
-import static bsu.edu.cs222.menus.MenuDesign.*;
+import static bsu.edu.cs222.MenuDesign.*;
 
 public class Menu extends Application {
     public void start(Stage primaryStage) {

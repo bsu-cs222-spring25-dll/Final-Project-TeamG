@@ -1,7 +1,5 @@
 package bsu.edu.cs222;
 
-import bsu.edu.cs222.menus.DifficultyMenu;
-
 public class DataSingleton {
     private static final DataSingleton instance = new DataSingleton();
     DifficultyMenu difficultyMenu = new DifficultyMenu();

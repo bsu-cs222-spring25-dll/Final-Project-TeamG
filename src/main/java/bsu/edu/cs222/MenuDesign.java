@@ -1,4 +1,4 @@
-package bsu.edu.cs222.menus;
+package bsu.edu.cs222;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

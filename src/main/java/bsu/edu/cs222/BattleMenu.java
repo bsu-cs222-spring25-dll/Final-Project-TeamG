@@ -1,4 +1,4 @@
-package bsu.edu.cs222.menus;
+package bsu.edu.cs222;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
