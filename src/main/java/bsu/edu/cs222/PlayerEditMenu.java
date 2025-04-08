@@ -1,73 +1,66 @@
 package bsu.edu.cs222;
 
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
+import static bsu.edu.cs222.MenuDesign.*;
+
 public class PlayerEditMenu {
-    Label playerLabel = new Label("Player 1");
-    Label hpLabel = new Label("HP: ");
-    Label attackLabel = new Label("Attack: ");
-    Label defenseLabel = new Label("Defense: ");
-    Label title = new Label("Edit Player");
+    Label playerLabel = createLabel("Player 1", 45);
+    Label hpLabel = createLabel("HP: ", 25);
+    Label attackLabel = createLabel("Attack: ", 25);
+    Label defenseLabel = createLabel("Defense: ", 25);
     int selectedPlayer = 1;
-    Button playerOneButton = new Button("Player One");
-    Button playerTwoButton = new Button("Player Two");
-    Button saveButton = new Button("Save changes");
-    Button defaultStatButton = new Button("Return to Default Stats");
-    Button mainMenuButton = new Button("Back to Main Menu");
-    TextField hpInput = new TextField();
-    TextField attackInput = new TextField();
-    TextField defenseInput = new TextField();
+    Button playerOneButton = createPlayerButton("Player One");
+    Button playerTwoButton = createPlayerButton("Player Two");
+    Button saveButton = createFunctionButton("Save changes");
+    Button defaultStatButton = createFunctionButton("Return to Default Stats");
+    Button mainMenuButton = createFunctionButton("Back to Main Menu");
+    TextField hpInput = createStatField();
+    TextField attackInput = createStatField();
+    TextField defenseInput = createStatField();
     GridPane statsGrid = new GridPane();
     VBox titleBox = new VBox(20, playerLabel);
     VBox playerSelection = new VBox(20, playerOneButton, playerTwoButton);
     HBox buttonBox = new HBox(20, saveButton, defaultStatButton, mainMenuButton);
+    Pane layout = new Pane();
+    Scene scene = new Scene(layout, 800, 600);
+
     public void start(Stage stage) {
         stage.setTitle("Edit Player");
-        BorderPane base = new BorderPane();
-        base.setStyle("-fx-background-color: #6badce;");
-        Scene scene = new Scene(base, 800, 600);
-        title.setStyle("-fx-text-fill: white;");
-        playerLabel.setStyle("-fx-text-fill: white;");
-        hpLabel.setStyle("-fx-text-fill: white;");
-        attackLabel.setStyle("-fx-text-fill: white;");
-        defenseLabel.setStyle("-fx-text-fill: white;");
-        playerLabel.setFont(new Font("Times New Roman", 45));
-        hpInput.setPrefSize(50, 50);
-        attackInput.setPrefSize(50, 50);
-        defenseInput.setPrefSize(50, 50);
+        layout.setStyle("-fx-background-color: #6badce;");
         stage.setScene(scene);
         stage.show();
-        titleBox.setAlignment(Pos.CENTER);
-        playerSelection.setAlignment(Pos.CENTER_LEFT);
+        titleBox.setLayoutX(290);
+        titleBox.setLayoutY(30);
         playerOneButton.setOnAction(_ -> switchPlayer(1));
-        playerOneButton.setPrefSize(100, 70);
         playerTwoButton.setOnAction(_ -> switchPlayer(2));
-        playerTwoButton.setPrefSize(100, 70);
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-        statsGrid.setVgap(20.0);
+        playerSelection.setLayoutX(40);
+        playerSelection.setLayoutY(230);
+        statsGrid.setVgap(25.0);
         statsGrid.setHgap(20.0);
-        statsGrid.setAlignment(Pos.CENTER);
+        statsGrid.setLayoutX(250);
+        statsGrid.setLayoutY(190);
         statsGrid.add(hpLabel, 0, 0);
         statsGrid.add(hpInput, 1, 0);
         statsGrid.add(attackLabel, 0, 1);
         statsGrid.add(attackInput, 1, 1);
         statsGrid.add(defenseLabel, 0, 2);
         statsGrid.add(defenseInput, 1, 2);
-        buttonBox.setAlignment(Pos.BOTTOM_LEFT);
-        base.setTop(titleBox);
-        base.setLeft(playerSelection);
-        base.setCenter(statsGrid);
-        base.setBottom(buttonBox);
-        base.setBackground(loadBackground());
+        buttonBox.setLayoutX(85);
+        buttonBox.setLayoutY(510);
+        layout.getChildren().addAll(titleBox, playerSelection, statsGrid, buttonBox);
+        stage.setScene(scene);
+        stage.show();
+        layout.setBackground(loadBackground());
     }
 
     protected void switchPlayer(int playerNumber){
@@ -93,7 +86,7 @@ public class PlayerEditMenu {
             return new Background(backgroundImage);
         } catch(Exception e){
             System.err.println("Failed to load background image.");
-            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+            return new Background(new BackgroundFill(Color.BLACK, null, null));
         }
     }
 }
