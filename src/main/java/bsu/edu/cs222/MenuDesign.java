@@ -33,4 +33,10 @@ public class MenuDesign {
         button.setPrefSize(200.0, 40.0);
         return button;
     }
+
+    public static Button createExitButton(String text){
+        Button button = new Button(text);
+        button.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+        return button;
+    }
 }

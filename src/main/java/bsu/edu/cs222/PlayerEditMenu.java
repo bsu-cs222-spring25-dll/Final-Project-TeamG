@@ -36,8 +36,6 @@ public class PlayerEditMenu {
     public void start(Stage stage) {
         stage.setTitle("Edit Player");
         layout.setStyle("-fx-background-color: #6badce;");
-        stage.setScene(scene);
-        stage.show();
         titleBox.setLayoutX(290);
         titleBox.setLayoutY(30);
         playerOneButton.setOnAction(_ -> switchPlayer(1));

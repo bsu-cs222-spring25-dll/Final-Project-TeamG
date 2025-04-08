@@ -9,6 +9,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
+import static bsu.edu.cs222.MenuDesign.*;
+
 public class EndCard {
     CharacterBase enemy;
     public void start(Stage stage, CharacterBase enemy) {
@@ -23,8 +25,7 @@ public class EndCard {
         restartButton.setOnAction(_ -> restart(stage));
         Button backMenuButton = new Button("Return to main menu?");
         backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-        Button exitButton = new Button("X");
-        exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+        Button exitButton = createExitButton("X");
         exitButton.setOnAction(_ -> exit());
         VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
         menuOptions.setAlignment(Pos.CENTER);

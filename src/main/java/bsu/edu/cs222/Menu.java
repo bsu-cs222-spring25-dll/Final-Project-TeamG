@@ -11,6 +11,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
+import static bsu.edu.cs222.MenuDesign.*;
+
 public class Menu extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPG Battle");
@@ -24,8 +26,7 @@ public class Menu extends Application {
         editPlayerButton.setPrefSize(150,55);
         editPlayerButton.setFont(Font.font("Century", 20.0));
         editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
-        Button exitButton = new Button("X");
-        exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+        Button exitButton = createExitButton("X");
         exitButton.setOnAction(_ -> primaryStage.close());
         VBox menuBox = new VBox(20.0, fightMonsterButton, editPlayerButton);
         menuBox.setAlignment(Pos.BASELINE_CENTER);
