@@ -18,11 +18,11 @@ public class Menu extends Application {
         base.setStyle("-fx-background-color: #6badce;");
         Button fightMonsterButton = new Button("Fight Enemy");
         fightMonsterButton.setPrefSize(150, 55);
-        fightMonsterButton.setFont(Font.font("Times New Roman", 20.0));
+        fightMonsterButton.setFont(Font.font("Century", 20.0));
         fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
         Button editPlayerButton = new Button("Edit Player");
         editPlayerButton.setPrefSize(150,55);
-        editPlayerButton.setFont(Font.font("Times New Roman", 20.0));
+        editPlayerButton.setFont(Font.font("Century", 20.0));
         editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
         Button exitButton = new Button("X");
         exitButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
@@ -61,7 +61,7 @@ public class Menu extends Application {
             return new Background(backgroundImage);
         } catch(Exception e){
             System.err.println("Failed to load background image.");
-            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+            return new Background(new BackgroundFill(javafx.scene.paint.Color.BLACK, null, null));
         }
     }
 
