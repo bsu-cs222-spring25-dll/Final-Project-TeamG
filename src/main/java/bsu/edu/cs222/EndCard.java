@@ -1,11 +1,13 @@
 package bsu.edu.cs222;
 
 import bsu.edu.cs222.combat.CharacterBase;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
@@ -13,24 +15,31 @@ import static bsu.edu.cs222.MenuDesign.*;
 
 public class EndCard {
     CharacterBase enemy;
+    Pane layout = new Pane();
+    Scene scene = new Scene(layout, 800, 600);
+    Button restartButton = createPlayerButton("Do you wish to restart?", 11);
+    Button backMenuButton = createPlayerButton("Return to main menu?", 11);
+    Button exitButton = createExitButton("X");
+    VBox menuOptions = new VBox(20.0, restartButton, backMenuButton);
+    HBox exitBox = new HBox(exitButton);
+
     public void start(Stage stage, CharacterBase enemy) {
         this.enemy = enemy;
         stage.setTitle("End Card");
-        BorderPane base = new BorderPane();
-        base.setStyle("-fx-background-color: #6badce;");
-        Scene scene = new Scene(base, 800, 600);
+        layout.setStyle("-fx-background-color: #6badce;");
+        restartButton.setOnAction(_ -> restart(stage));
+        backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
+        exitButton.setOnAction(_ -> stage.close());
+        menuOptions.setLayoutX(320.0);
+        menuOptions.setLayoutY(300.0);
+        exitBox.setPrefWidth(800);
+        exitBox.setAlignment(Pos.TOP_RIGHT);
+        exitBox.setLayoutY(10);
+        exitBox.setPadding(new Insets(0, 5, 0, 0));
+        layout.getChildren().addAll(menuOptions, exitBox);
         stage.setScene(scene);
         stage.show();
-        Button restartButton = new Button("Do you wish to restart?");
-        restartButton.setOnAction(_ -> restart(stage));
-        Button backMenuButton = new Button("Return to main menu?");
-        backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-        Button exitButton = createExitButton("X");
-        exitButton.setOnAction(_ -> exit());
-        VBox menuOptions = new VBox(15.0, restartButton, backMenuButton, exitButton);
-        menuOptions.setAlignment(Pos.CENTER);
-        menuOptions.setBackground(loadBackground());
-        base.setCenter(menuOptions);
+        layout.setBackground(loadBackground());
 }
 
     private void restart(Stage stage){
@@ -53,10 +62,6 @@ public class EndCard {
     stage.close();
 }
 
-    private void exit(){
-        System.exit(0);
-    }
-
     private Background loadBackground(){
         try(FileInputStream input = new FileInputStream("src/Assets/EndCardBG.PNG")){
             Image image = new Image(input);
@@ -64,7 +69,7 @@ public class EndCard {
             return new Background(backgroundImage);
         } catch(Exception e){
             System.err.println("Failed to load background image.");
-            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+            return new Background(new BackgroundFill(Color.BLACK, null, null));
         }
     }
 }
