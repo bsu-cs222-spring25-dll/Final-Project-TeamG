@@ -5,27 +5,42 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
+
+import static bsu.edu.cs222.MenuDesign.*;
 
 public class BattleMenu {
     CharacterBase enemy;
     CharacterBase player;
+    Button endCardButton = new Button("Go to end card menu");
+    Button attackButton = createPlayerButton("Attack", 15);
+    Button defendButton = createPlayerButton("Defense", 15);
+    VBox menuOptions = new VBox(15.0, endCardButton);
+    VBox actionOptions = new VBox(15.0, attackButton, defendButton);
+    Pane layout = new Pane();
+    Scene scene = new Scene(layout, 800, 600);
+
     public void start(Stage stage, CharacterBase enemy, CharacterBase player) {
         this.enemy = enemy;
         this.player = player;
         stage.setTitle("Battle!");
-        BorderPane base = new BorderPane();
-        base.setStyle("-fx-background-color: #6badce;");
-        Button endCardButton = new Button("Go to end card menu");
+        layout.setStyle("-fx-background-color: #6badce;");
         endCardButton.setOnAction(_ -> openEndCard((stage)));
-        VBox menuOptions = new VBox(15.0, endCardButton);
+        //attackButton.setOnAction(_ -> );
+        //defendButton.setOnAction(_ -> );
+        endCardButton.setFont(new Font("Century", 8.0));
+        endCardButton.setPrefSize(90.0, 30.0);
         menuOptions.setStyle("-fx-alignment: bottom-right;");
-        menuOptions.setBackground(loadBackground());
-        Scene scene = new Scene(base, 800, 600);
+        menuOptions.setLayoutX(650.0);
+        menuOptions.setLayoutY(550.0);
+        actionOptions.setLayoutX(50.0);
+        actionOptions.setLayoutY(450.0);
         stage.setScene(scene);
         stage.show();
-        base.setCenter(menuOptions);
+        layout.getChildren().addAll(menuOptions, actionOptions);
+        layout.setBackground(loadBackground());
     }
 
     private void openEndCard(Stage stage){
