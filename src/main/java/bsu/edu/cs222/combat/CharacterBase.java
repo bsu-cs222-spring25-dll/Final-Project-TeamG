@@ -3,6 +3,7 @@ package bsu.edu.cs222.combat;
 public abstract class CharacterBase {
     public String name;
     public int maxHp, Hp;
+
     public CharacterBase(String name, int maxHp){
         this.name = name;
         this.maxHp = maxHp;
@@ -28,5 +29,4 @@ public abstract class CharacterBase {
     }
     public abstract int attack();
     public abstract int defend();
-
 }

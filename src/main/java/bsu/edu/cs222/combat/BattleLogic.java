@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class BattleLogic {
     DifficultySelection difficultySelection = new DifficultySelection();
-    String difficultychoice = difficultySelection.getUserDifficultyChoice();
-    CharacterBase enemy = difficultySelection.getSelectedEnemy(difficultychoice);
+    String difficultyChoice = difficultySelection.getUserDifficultyChoice();
+    CharacterBase enemy = difficultySelection.getSelectedEnemy(difficultyChoice);
     PlayerSelection playerSelection = new PlayerSelection();
     String playerChoice = playerSelection.getPromptPlayerUserChoice();
     CharacterBase player = playerSelection.getSelectedPlayer(playerChoice);

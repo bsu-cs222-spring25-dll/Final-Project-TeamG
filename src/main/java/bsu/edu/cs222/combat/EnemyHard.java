@@ -3,6 +3,7 @@ package bsu.edu.cs222.combat;
 public class EnemyHard extends CharacterBase {
     public int attackPower;
     public int defensePower;
+
     public EnemyHard(String name){
         super(name, 20);
         this.attackPower = 25;
@@ -18,5 +19,4 @@ public class EnemyHard extends CharacterBase {
     public int defend(){
         return defensePower;
     }
-
 }
