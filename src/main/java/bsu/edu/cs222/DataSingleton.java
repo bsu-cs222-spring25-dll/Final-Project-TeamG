@@ -1,5 +1,7 @@
 package bsu.edu.cs222;
 
+import bsu.edu.cs222.menu.DifficultyMenu;
+
 public class DataSingleton {
     private static final DataSingleton instance = new DataSingleton();
     private String selectedDifficultyData;

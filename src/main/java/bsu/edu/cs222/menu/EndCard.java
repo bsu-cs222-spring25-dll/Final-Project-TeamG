@@ -1,4 +1,4 @@
-package bsu.edu.cs222;
+package bsu.edu.cs222.menu;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Insets;
@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 
-import static bsu.edu.cs222.MenuDesign.*;
+import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class EndCard {
     CharacterBase enemy;

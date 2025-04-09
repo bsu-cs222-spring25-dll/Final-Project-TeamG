@@ -1,4 +1,4 @@
-package bsu.edu.cs222;
+package bsu.edu.cs222.menu;
 
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import bsu.edu.cs222.combat.DifficultySelection;
 
-import static bsu.edu.cs222.MenuDesign.*;
+import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class DifficultyMenu {
     private final DifficultySelection difficultySelection = new DifficultySelection();

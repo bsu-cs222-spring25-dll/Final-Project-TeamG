@@ -1,4 +1,4 @@
-package bsu.edu.cs222;
+package bsu.edu.cs222.menu;
 
 public class Main {
     public static void main(String[] args) {
