@@ -44,14 +44,14 @@ public class PlayerChoiceMenu{
     }
 
     public void selectPlayer(String player){
-        //this.selectedPlayer = player;
+        this.selectedPlayer = player;
         chosenPlayer = playerSelection.getSelectedPlayer(player);
         System.out.println("Selected player: " + chosenPlayer.getName());
     }
 
-    public String getSelectedPlayer(){
-        return selectedPlayer;
-    }
+    //public String getSelectedPlayer(){
+        //return selectedPlayer;
+    //}
 
     private void returnToDifficultyMenu(Stage stage){
         DifficultyMenu difficultyMenu = new DifficultyMenu();
@@ -60,7 +60,7 @@ public class PlayerChoiceMenu{
     }
 
     private void startBattle(Stage stage){
-        System.out.println("Starting battle with " + chosenPlayer.getName() + " on " + enemy.getName() + " difficulty.");
+        System.out.println("Starting battle with " + chosenPlayer.getName() + " on " + enemy.getName() + " difficulty: " + selectedDifficulty);
         BattleMenu battleMenu = new BattleMenu();
         battleMenu.start(new Stage(), enemy, chosenPlayer);
         stage.close();

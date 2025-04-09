@@ -21,9 +21,9 @@ public class BattleLogic {
     int enemyHP = enemy.getHp();
 
     public void startRound(){
-        boolean battleKeepGoing = true;
         int playerChoice;
         System.out.printf("You've encountered %s ", enemyName);
+        boolean battleKeepGoing = true;
         while(battleKeepGoing){
             System.out.println("What do you wish to do?\n1)Attack\n2)Defend\n");
             playerChoice = Integer.parseInt(scanner.nextLine());
@@ -68,11 +68,8 @@ public class BattleLogic {
         if(damage < 0){
             damage = 0;
             System.out.printf("%d damage was dealt to %s. ", damage, enemyName);
-            enemyHP -= damage;
             if(enemyHP < 0){
                 enemyHP = 0;
-            }
-            else{
             }
         }
         else{
@@ -80,8 +77,6 @@ public class BattleLogic {
             enemyHP -= damage;
             if(enemyHP < 0){
                 enemyHP = 0;
-            }
-            else{
             }
         }
         return enemyHP;
@@ -93,11 +88,8 @@ public class BattleLogic {
         if(damage < 0){
             damage = 0;
             System.out.printf("%d damage was dealt to %s. ", damage, playerName);
-            playerHP -= damage;
             if(playerHP < 0){
                 playerHP = 0;
-            }
-            else{
             }
         }
         else{
@@ -105,8 +97,6 @@ public class BattleLogic {
             playerHP -= damage;
             if(playerHP < 0){
                 playerHP = 0;
-            }
-            else{
             }
         }
         return playerHP;

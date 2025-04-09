@@ -17,21 +17,28 @@ public class DifficultySelection {
         return selectedDifficultyChoice;
     }
 
-    public void DifficultySelection(String selectedDifficultyChoice, CharacterBase enemy) {
-        this.selectedDifficultyChoice = selectedDifficultyChoice;
-        this.enemy = enemy;
+    public DifficultySelection() {
+        this.selectedDifficultyChoice = "";
+        this.enemy = null;
     }
 
-    public CharacterBase getSelectedEnemy(String selectedDifficultyChoice){
+    public CharacterBase getSelectedEnemy(String difficulty){
         //getUserDifficultyChoice();
-        if(selectedDifficultyChoice.equals("Easy")){
-            enemy = new EnemyEasy("Bunbun");
+        while(!difficulty.equalsIgnoreCase("Easy") && !difficulty.equalsIgnoreCase("Medium") && !difficulty.equalsIgnoreCase("Hard")){
+            System.out.println("Invalid input. Please try again. ");
+            difficulty = scanner.nextLine();
         }
-        else if(selectedDifficultyChoice.equals("Medium")){
-            enemy = new EnemyMedium("Gobbo");
-        }
-        else if(selectedDifficultyChoice.equals("Hard")){
-            enemy = new EnemyHard("Howard");
+        this.selectedDifficultyChoice = difficulty.substring(0, 1).toUpperCase() + difficulty.substring(1).toLowerCase();
+        switch(this.selectedDifficultyChoice){
+            case "Easy":
+                enemy = new EnemyEasy("Bunbun");
+                break;
+            case "Medium":
+                enemy = new EnemyMedium("Gobbo");
+                break;
+            case "Hard":
+                enemy = new EnemyHard("Howard");
+                break;
         }
         return enemy;
     }

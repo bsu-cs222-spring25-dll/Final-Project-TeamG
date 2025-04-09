@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import bsu.edu.cs222.combat.DifficultySelection;
@@ -71,7 +72,7 @@ public class DifficultyMenu {
             return new Background(backgroundImage);
         } catch(Exception e){
             System.err.println("Failed to load background image.");
-            return new Background(new BackgroundFill(javafx.scene.paint.Color.LIGHTBLUE, null, null));
+            return new Background(new BackgroundFill(Color.BLACK, null, null));
         }
     }
 }

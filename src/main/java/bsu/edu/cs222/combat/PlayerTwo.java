@@ -4,7 +4,7 @@ public class PlayerTwo extends CharacterBase {
     public int attackPower;
     public int defensePower;
     public PlayerTwo(String name){
-        super(name, 75);
+        super(name, 50);
         this.attackPower = 10;
         this.defensePower = 8;
     }
