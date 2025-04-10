@@ -28,8 +28,10 @@ public class PlayerChoiceMenu{
         layout.setStyle("-fx-background-color: #6badce;");
         Button playerOneButton = createPlayerButton("Player One", 15);
         playerOneButton.setOnAction(_ -> selectPlayer("Player One"));
+
         Button playerTwoButton = createPlayerButton("Player Two", 15);
         playerTwoButton.setOnAction(_ -> selectPlayer("Player Two"));
+
         Button backButton = createPlayerButton("Back to Difficulty", 15);
         backButton.setOnAction(_ -> returnToDifficultyMenu(stage));
         Button startBattleButton = createPlayerButton("Start Battle", 15);

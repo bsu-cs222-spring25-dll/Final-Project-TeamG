@@ -1,5 +1,6 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,6 +14,8 @@ import java.io.FileInputStream;
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class BattleMenu {
+
+    BattleLogic battleLogic = new BattleLogic();
     CharacterBase enemy;
     CharacterBase player;
     Button endCardButton = new Button("Go to end card menu");
@@ -29,8 +32,8 @@ public class BattleMenu {
         stage.setTitle("Battle!");
         layout.setStyle("-fx-background-color: #6badce;");
         endCardButton.setOnAction(_ -> openEndCard((stage)));
-        //attackButton.setOnAction(_ -> );
-        //defendButton.setOnAction(_ -> );
+        attackButton.setOnAction(_ -> battleLogic.attackBattleTurnOrder(player, enemy));
+        defendButton.setOnAction(_ -> battleLogic.defendBattleTurnOrder(player, enemy));
         endCardButton.setFont(new Font("Century", 8.0));
         endCardButton.setPrefSize(90.0, 30.0);
         menuOptions.setStyle("-fx-alignment: bottom-right;");
