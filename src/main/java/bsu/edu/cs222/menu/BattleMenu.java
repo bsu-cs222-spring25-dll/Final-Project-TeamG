@@ -25,6 +25,7 @@ public class BattleMenu {
     VBox actionOptions = new VBox(15.0, attackButton, defendButton);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
+    String backgroundName;
 
     public void start(Stage stage, CharacterBase enemy, CharacterBase player) {
         this.enemy = enemy;
@@ -41,6 +42,9 @@ public class BattleMenu {
         menuOptions.setLayoutY(550.0);
         actionOptions.setLayoutX(50.0);
         actionOptions.setLayoutY(450.0);
+
+        getBackgroundName();
+
         stage.setScene(scene);
         stage.show();
         layout.getChildren().addAll(menuOptions, actionOptions);
@@ -57,8 +61,25 @@ public class BattleMenu {
         stage.close();
     }
 
+    private String getBackgroundName(){
+        if(enemy.getName().equals("Bunbun")){
+            backgroundName = "EasyEnemyBG.PNG";
+
+        }
+        else if(enemy.getName().equals("Gobbo")){
+            backgroundName = "MediumEnemyBG.PNG";
+        }
+        else if(enemy.getName().equals("Howard")){
+            backgroundName = "HardEnemyBG.PNG";
+        }
+        else{
+            backgroundName = "BattleMenuSketchBG.jpg";
+        }
+        return backgroundName;
+    }
+
     private Background loadBackground(){
-        try(FileInputStream input = new FileInputStream("src/Assets/" + "BattleMenuSketchBG" + ".jpg")){
+        try(FileInputStream input = new FileInputStream("src/Assets/" + backgroundName)){
             Image image = new Image(input);
             BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
             return new Background(backgroundImage);
@@ -67,4 +88,6 @@ public class BattleMenu {
             return new Background(new BackgroundFill(Color.BLACK, null, null));
         }
     }
+
+
 }
