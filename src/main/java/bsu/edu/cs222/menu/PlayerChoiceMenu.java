@@ -64,8 +64,17 @@ public class PlayerChoiceMenu{
     private void startBattle(Stage stage){
         System.out.println("Starting battle with " + chosenPlayer.getName() + " on " + enemy.getName() + " difficulty: " + selectedDifficulty);
         BattleMenu battleMenu = new BattleMenu();
-        battleMenu.start(new Stage(), enemy, chosenPlayer);
-        stage.close();
+        PlayerEditMenu playerEditMenu = new PlayerEditMenu();
+        if(chosenPlayer.getName().equals("Player One")){
+            playerEditMenu.start(new Stage(),enemy, chosenPlayer);
+            stage.close();
+
+        }
+        else if(chosenPlayer.getName().equals("Player Two")){
+            battleMenu.start(new Stage(), enemy, chosenPlayer);
+            stage.close();
+
+        }
     }
 
     private Background loadBackground(){

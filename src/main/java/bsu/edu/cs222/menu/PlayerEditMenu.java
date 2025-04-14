@@ -1,5 +1,7 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.CharacterBase;
+import bsu.edu.cs222.combat.PlayerOne;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +15,9 @@ import java.io.FileInputStream;
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class PlayerEditMenu {
+    CharacterBase player;
+    CharacterBase enemy;
+
     Label playerLabel = createLabel("Player 1", 45);
     Label hpLabel = createLabel("HP: ", 25);
     Label attackLabel = createLabel("Attack: ", 25);
@@ -20,7 +25,7 @@ public class PlayerEditMenu {
     Button playerOneButton = createPlayerButton("Player One", 15);
     Button playerTwoButton = createPlayerButton("Player Two", 15);
     Button saveButton = createFunctionButton("Save changes");
-    Button defaultStatButton = createFunctionButton("Return to Default Stats");
+    Button starBattleButton = createFunctionButton("Start Battle");
     Button mainMenuButton = createFunctionButton("Back to Main Menu");
     TextField hpInput = createStatField();
     TextField attackInput = createStatField();
@@ -28,18 +33,28 @@ public class PlayerEditMenu {
     GridPane statsGrid = new GridPane();
     VBox titleBox = new VBox(20, playerLabel);
     VBox playerSelection = new VBox(20, playerOneButton, playerTwoButton);
-    HBox buttonBox = new HBox(20, saveButton, defaultStatButton, mainMenuButton);
+    HBox buttonBox = new HBox(20, saveButton, starBattleButton, mainMenuButton);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
     int selectedPlayer = 1;
 
-    public void start(Stage stage) {
+    public void start(Stage stage, CharacterBase enemy, CharacterBase player) {
+        this.enemy = enemy;
+        this.player = player;
+
         stage.setTitle("Edit Player");
         layout.setStyle("-fx-background-color: #6badce;");
         titleBox.setLayoutX(290);
         titleBox.setLayoutY(30);
         playerOneButton.setOnAction(_ -> switchPlayer(1));
         playerTwoButton.setOnAction(_ -> switchPlayer(2));
+
+        saveButton.setOnAction(_ -> setEditedStats(player));
+
+        starBattleButton.setOnAction(_ -> startBattle(stage));
+
+
+
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
         playerSelection.setLayoutX(40);
         playerSelection.setLayoutY(230);
@@ -86,6 +101,35 @@ public class PlayerEditMenu {
             System.err.println("Failed to load background image.");
             return new Background(new BackgroundFill(Color.BLACK, null, null));
         }
+    }
+
+    private void setEditedStats(CharacterBase playerOne){
+        if(hpInput.getText().equals(null)){
+            playerOne.setHp(25);
+        }
+        else{
+            playerOne.setHp(Integer.parseInt(hpInput.getText()));
+        }
+
+        if(attackInput.getText().equals(null)){
+            playerOne.setAttackPower(15);
+        }
+        else{
+            playerOne.setAttackPower(Integer.parseInt(attackInput.getText()));
+        }
+
+        if(defenseInput.getText().equals(null)){
+            playerOne.setDefensePower(8);
+        }
+        else{
+            playerOne.setDefensePower(Integer.parseInt(defenseInput.getText()));
+        }
+    }
+
+    public void startBattle(Stage stage){
+        BattleMenu battleMenu = new BattleMenu();
+        battleMenu.start(new Stage(), enemy, player);
+        stage.close();
     }
 }
 //Resources: https://github.com/jjenkov/javafx-examples/tree/main

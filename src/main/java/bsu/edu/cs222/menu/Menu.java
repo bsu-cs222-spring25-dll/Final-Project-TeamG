@@ -1,5 +1,7 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.CharacterBase;
+import bsu.edu.cs222.combat.PlayerOne;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,6 +16,8 @@ import java.io.FileInputStream;
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class Menu extends Application {
+    CharacterBase playerOneBase = new PlayerOne("Player One");
+
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPG Battle");
         BorderPane base = new BorderPane();
@@ -51,7 +55,7 @@ public class Menu extends Application {
     private void openPlayerEditMenu(Stage primaryStage){
         System.out.println("Opening Player edit menu...");
         PlayerEditMenu playerEditMenu = new PlayerEditMenu();
-        playerEditMenu.start(new Stage());
+        //playerEditMenu.start(new Stage());
         primaryStage.close();
     }
 
