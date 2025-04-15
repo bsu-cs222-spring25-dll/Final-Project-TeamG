@@ -6,6 +6,7 @@ public class BattleLogic {
     DifficultySelection difficultySelection = new DifficultySelection();
 
     PlayerSelection playerSelection = new PlayerSelection();
+    int battleWinNumber;
 
     Scanner scanner = new Scanner(System.in);
     int damage;
@@ -93,6 +94,8 @@ public class BattleLogic {
         System.out.printf("%s now has %d health left! ", enemy.getName(), enemy.getHp());
         if(enemy.getHp() == 0){
             System.out.printf("\n%s has been defeated! The battle is now over.", enemy.getName());
+            battleWinNumber++;
+            System.out.printf("Battle win number: %d", battleWinNumber);
             battleKeepGoing = false;
         }
         else{
@@ -122,5 +125,14 @@ public class BattleLogic {
         }
         return battleKeepGoing;
 
+    }
+
+
+    public int getBattleWinNumber() {
+        return battleWinNumber;
+    }
+
+    public void setBattleWinNumber(int battleWinNumber) {
+        this.battleWinNumber = battleWinNumber;
     }
 }
