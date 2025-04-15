@@ -85,6 +85,9 @@ public class BattleLogic {
         return player.getHp();
     }
 
+
+
+    //Use these function for getting the output dialogue
     public boolean attackBattleTurnOrder(CharacterBase player, CharacterBase enemy){
         playerAttack(player, enemy);
         System.out.printf("%s now has %d health left! ", enemy.getName(), enemy.getHp());
@@ -104,6 +107,8 @@ public class BattleLogic {
     }
 
 
+
+    //use this and the attackBattleTurnOrder function for the textbox dialogue in the battle menu
     public boolean defendBattleTurnOrder(CharacterBase player, CharacterBase enemy){
         System.out.printf("\n%s defended!\n", player.getName());
         int playerDefensePower = player.defend() * 2;
