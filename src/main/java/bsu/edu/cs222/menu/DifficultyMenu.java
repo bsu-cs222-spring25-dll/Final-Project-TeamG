@@ -1,5 +1,6 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,8 +16,12 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 public class DifficultyMenu {
     private final DifficultySelection difficultySelection = new DifficultySelection();
     private String selectedDifficulty;
+    //BattleLogic battleLogic = new BattleLogic();
+    public int winAmount;
 
-    public void start(Stage stage) {
+
+    public void start(Stage stage, int winAmount) {
+        this.winAmount = winAmount;
         stage.setTitle("Difficulty menu");
         Pane layout = new Pane();
         layout.setStyle("-fx-background-color: #6badce;");
@@ -43,7 +48,7 @@ public class DifficultyMenu {
         System.out.println("Difficulty selected: " + difficulty);
         CharacterBase chosenEnemy = difficultySelection.getSelectedEnemy(difficulty);
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
-        playerChoiceMenu.start(new Stage(), chosenEnemy);
+        playerChoiceMenu.start(new Stage(), chosenEnemy, winAmount);
         stage.close();
     }
 

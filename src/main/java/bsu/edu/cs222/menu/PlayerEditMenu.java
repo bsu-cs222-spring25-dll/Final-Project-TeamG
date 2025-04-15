@@ -1,5 +1,6 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import bsu.edu.cs222.combat.PlayerOne;
 import javafx.scene.Scene;
@@ -38,9 +39,13 @@ public class PlayerEditMenu {
     Scene scene = new Scene(layout, 800, 600);
     int selectedPlayer = 1;
 
-    public void start(Stage stage, CharacterBase enemy, CharacterBase player) {
+    //BattleLogic battleLogic = new BattleLogic();
+    int winAmount;
+
+    public void start(Stage stage, CharacterBase enemy, CharacterBase player, int winAmount) {
         this.enemy = enemy;
         this.player = player;
+        this.winAmount = winAmount;
 
         stage.setTitle("Edit Player");
         layout.setStyle("-fx-background-color: #6badce;");
@@ -129,7 +134,7 @@ public class PlayerEditMenu {
 
     public void startBattle(Stage stage){
         BattleMenu battleMenu = new BattleMenu();
-        battleMenu.start(new Stage(), enemy, player);
+        battleMenu.start(new Stage(), enemy, player, winAmount);
         stage.close();
     }
 }

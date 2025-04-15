@@ -1,5 +1,6 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import bsu.edu.cs222.combat.PlayerOne;
 import javafx.application.Application;
@@ -17,8 +18,11 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class Menu extends Application {
     CharacterBase playerOneBase = new PlayerOne("Player One");
+    //BattleLogic battleLogic = new BattleLogic();
+    int winAmount;
 
     public void start(Stage primaryStage) {
+        this.winAmount = winAmount;
         primaryStage.setTitle("RPG Battle");
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
@@ -51,7 +55,7 @@ public class Menu extends Application {
     private void openDifficultyMenu(Stage primaryStage){
         System.out.println("Opening Difficulty menu...");
         DifficultyMenu difficultyMenu = new DifficultyMenu();
-        difficultyMenu.start(new Stage());
+        difficultyMenu.start(new Stage(), winAmount);
         primaryStage.close();
     }
 

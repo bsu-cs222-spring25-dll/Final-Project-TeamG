@@ -1,6 +1,7 @@
 package bsu.edu.cs222.menu;
 
 import bsu.edu.cs222.combat.BattleLogic;
+import bsu.edu.cs222.combat.BattleWinCalculator;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 public class BattleMenu {
 
     BattleLogic battleLogic = new BattleLogic();
+    BattleWinCalculator battleWinCalculator = new BattleWinCalculator();
     CharacterBase enemy;
     CharacterBase player;
     Button endCardButton = new Button("Go to end card menu");
@@ -26,8 +28,10 @@ public class BattleMenu {
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
     String backgroundName;
+    int winAmount = battleWinCalculator.getBattleWinNumber();
 
-    public void start(Stage stage, CharacterBase enemy, CharacterBase player) {
+    public void start(Stage stage, CharacterBase enemy, CharacterBase player, int winAmount) {
+        this.winAmount = winAmount;
         this.enemy = enemy;
         this.player = player;
         stage.setTitle("Battle!");
@@ -52,9 +56,13 @@ public class BattleMenu {
     }
 
     private void openEndCard(Stage stage){
+        battleWinCalculator.increaseWinCount();
+        winAmount = battleWinCalculator.getBattleWinNumber();
+        System.out.printf("Number of wins: %d", winAmount);
+
         EndCard endCard = new EndCard();
         try {
-            endCard.start(new Stage(), enemy);
+            endCard.start(new Stage(), enemy, winAmount);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

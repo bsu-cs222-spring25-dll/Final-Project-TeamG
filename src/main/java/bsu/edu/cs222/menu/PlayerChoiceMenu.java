@@ -1,5 +1,6 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import bsu.edu.cs222.combat.PlayerSelection;
 import javafx.scene.Scene;
@@ -16,13 +17,18 @@ public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
     String selectedDifficulty = difficultyMenu.getSelectedDifficulty();
     PlayerSelection playerSelection = new PlayerSelection();
+
+    BattleLogic battleLogic = new BattleLogic();
+    int winAmount;
+
     String selectedPlayer;
     CharacterBase enemy;
     CharacterBase chosenPlayer;
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
 
-    public void start(Stage stage, CharacterBase enemy) {
+    public void start(Stage stage, CharacterBase enemy, int winAmount) {
+        this.winAmount = winAmount;
         this.enemy = enemy;
         stage.setTitle("Player Choice");
         layout.setStyle("-fx-background-color: #6badce;");
@@ -57,7 +63,7 @@ public class PlayerChoiceMenu{
 
     private void returnToDifficultyMenu(Stage stage){
         DifficultyMenu difficultyMenu = new DifficultyMenu();
-        difficultyMenu.start(new Stage());
+        difficultyMenu.start(new Stage(), winAmount);
         stage.close();
     }
 
@@ -66,12 +72,12 @@ public class PlayerChoiceMenu{
         BattleMenu battleMenu = new BattleMenu();
         PlayerEditMenu playerEditMenu = new PlayerEditMenu();
         if(chosenPlayer.getName().equals("Player One")){
-            playerEditMenu.start(new Stage(),enemy, chosenPlayer);
+            playerEditMenu.start(new Stage(),enemy, chosenPlayer, winAmount);
             stage.close();
 
         }
         else if(chosenPlayer.getName().equals("Player Two")){
-            battleMenu.start(new Stage(), enemy, chosenPlayer);
+            battleMenu.start(new Stage(), enemy, chosenPlayer, winAmount);
             stage.close();
 
         }

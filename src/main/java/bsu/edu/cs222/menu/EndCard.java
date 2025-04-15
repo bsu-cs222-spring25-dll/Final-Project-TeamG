@@ -1,5 +1,7 @@
 package bsu.edu.cs222.menu;
 
+import bsu.edu.cs222.combat.BattleLogic;
+import bsu.edu.cs222.combat.BattleWinCalculator;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,6 +16,8 @@ import java.io.FileInputStream;
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class EndCard {
+    //BattleLogic battleLogic = new BattleLogic();
+    int winAmount;
     CharacterBase enemy;
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
@@ -23,9 +27,12 @@ public class EndCard {
     VBox menuOptions = new VBox(20.0, restartButton, backMenuButton);
     HBox exitBox = new HBox(exitButton);
 
-    public void start(Stage stage, CharacterBase enemy) {
+
+
+    public void start(Stage stage, CharacterBase enemy, int winAmount) {
+        this.winAmount = winAmount;
         this.enemy = enemy;
-        stage.setTitle("End Card");
+        stage.setTitle("End Card" + winAmount);
         layout.setStyle("-fx-background-color: #6badce;");
         restartButton.setOnAction(_ -> restart(stage));
         backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
@@ -45,7 +52,8 @@ public class EndCard {
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         try {
-            playerChoiceMenu.start(new Stage(), enemy);
+            enemy.setHp(enemy.getMaxHp());
+            playerChoiceMenu.start(new Stage(), enemy, winAmount);
     } catch (Exception e) {
         throw new RuntimeException(e);
     }
