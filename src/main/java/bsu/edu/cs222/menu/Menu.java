@@ -26,13 +26,16 @@ public class Menu extends Application {
         fightMonsterButton.setPrefSize(150, 55);
         fightMonsterButton.setFont(Font.font("Century", 20.0));
         fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
-        Button editPlayerButton = new Button("Edit Player");
-        editPlayerButton.setPrefSize(150,55);
-        editPlayerButton.setFont(Font.font("Century", 20.0));
-        editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
+
+        //We don't need the edit player button on the first menu
+        //Button editPlayerButton = new Button("Edit Player");
+        //editPlayerButton.setPrefSize(150,55);
+        //editPlayerButton.setFont(Font.font("Century", 20.0));
+        //editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
+
         Button exitButton = createExitButton("X");
         exitButton.setOnAction(_ -> primaryStage.close());
-        VBox menuBox = new VBox(20.0, fightMonsterButton, editPlayerButton);
+        VBox menuBox = new VBox(20.0, fightMonsterButton);
         menuBox.setAlignment(Pos.BASELINE_CENTER);
         menuBox.setPadding(new Insets(320, 0, 0, 0));
         menuBox.setBackground(loadBackground());

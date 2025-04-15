@@ -23,7 +23,7 @@ public class PlayerEditMenu {
     Label attackLabel = createLabel("Attack: ", 25);
     Label defenseLabel = createLabel("Defense: ", 25);
     Button playerOneButton = createPlayerButton("Player One", 15);
-    Button playerTwoButton = createPlayerButton("Player Two", 15);
+    //Button playerTwoButton = createPlayerButton("Player Two", 15);
     Button saveButton = createFunctionButton("Save changes");
     Button starBattleButton = createFunctionButton("Start Battle");
     Button mainMenuButton = createFunctionButton("Back to Main Menu");
@@ -32,7 +32,7 @@ public class PlayerEditMenu {
     TextField defenseInput = createStatField();
     GridPane statsGrid = new GridPane();
     VBox titleBox = new VBox(20, playerLabel);
-    VBox playerSelection = new VBox(20, playerOneButton, playerTwoButton);
+    VBox playerSelection = new VBox(20, playerOneButton);
     HBox buttonBox = new HBox(20, saveButton, starBattleButton, mainMenuButton);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
@@ -47,7 +47,7 @@ public class PlayerEditMenu {
         titleBox.setLayoutX(290);
         titleBox.setLayoutY(30);
         playerOneButton.setOnAction(_ -> switchPlayer(1));
-        playerTwoButton.setOnAction(_ -> switchPlayer(2));
+        //playerTwoButton.setOnAction(_ -> switchPlayer(2));
 
         saveButton.setOnAction(_ -> setEditedStats(player));
 
@@ -124,6 +124,7 @@ public class PlayerEditMenu {
         else{
             playerOne.setDefensePower(Integer.parseInt(defenseInput.getText()));
         }
+        System.out.println("Saved changes to stats!\n");
     }
 
     public void startBattle(Stage stage){
