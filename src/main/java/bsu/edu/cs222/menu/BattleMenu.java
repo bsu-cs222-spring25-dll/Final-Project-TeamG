@@ -59,8 +59,9 @@ public class BattleMenu {
     }
 
     private void openEndCard(Stage stage){
-        battleWinCalculator.increaseWinCount();
-        winAmount = battleWinCalculator.getBattleWinNumber();
+        //battleWinCalculator.increaseWinCount();
+        //winAmount = battleWinCalculator.getBattleWinNumber();
+        winAmount++;
         System.out.printf("Number of wins: %d", winAmount);
 
         EndCard endCard = new EndCard();

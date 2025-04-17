@@ -22,8 +22,8 @@ public class Menu extends Application {
     int winAmount;
 
     public void start(Stage primaryStage) {
-        this.winAmount = winAmount;
-        primaryStage.setTitle("RPG Battle");
+        //this.winAmount = winAmount;
+        primaryStage.setTitle("RPG Battle" + winAmount);
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
         Button fightMonsterButton = new Button("Fight Enemy");
