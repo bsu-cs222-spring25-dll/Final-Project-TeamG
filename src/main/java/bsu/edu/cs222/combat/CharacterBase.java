@@ -14,23 +14,22 @@ public abstract class CharacterBase {
     public String getName() {
         return name;
     }
-    //Suppressing "unused" warning because these setters/getters will be used in future iteration.
-    @SuppressWarnings("unused")
+
     public void setName(String name) {
         this.name = name;
     }
-    @SuppressWarnings("unused")
+
     public int getMaxHp() {
         return maxHp;
     }
-    @SuppressWarnings("unused")
+
     public void setMaxHp(int maxHp) {
         this.maxHp = maxHp;
     }
     public int getHp() {
         return Hp;
     }
-    @SuppressWarnings("unused")
+
     public void setHp(int hp) {
         Hp = hp;
     }

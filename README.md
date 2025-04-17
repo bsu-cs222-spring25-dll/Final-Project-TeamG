@@ -59,11 +59,7 @@ This iteration was implementation of test classes and a package that were create
 
 - <p> PlayerSelection (A system that is implemented in the program to let them have a selection of characters to choose from.) <br>
 
-- <p> TurnBattleMain (The system that runs the code.) <br> 
-
-### Suppressed Warnings in CharacterBase.java
-- @SuppressedWarnings("unused")
-- The setter/getter methods are not currently in use but are intended for future use to provide flexibility for modifications.
+- <p> TurnBattleMain (The system that runs the code.) <br>
 
 ### How to run the program 
 1. Navigate to the menu class

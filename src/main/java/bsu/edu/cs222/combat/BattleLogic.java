@@ -10,14 +10,6 @@ public class BattleLogic {
 
     Scanner scanner = new Scanner(System.in);
     int damage;
-    //String playerName = player.getName();
-    //String enemyName = enemy.getName();
-    //int playerAttackPower = player.attack();
-    //int playerDefensePower = player.defend();
-    //int playerHP = player.getHp();
-    //int enemyAttackPower = enemy.attack();
-    //int enemyDefensePower = enemy.defend();
-    //int enemyHP = enemy.getHp();
     boolean battleKeepGoing;
 
     public void startRound(){
