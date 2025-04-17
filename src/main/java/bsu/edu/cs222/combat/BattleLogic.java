@@ -5,9 +5,7 @@ import java.util.Scanner;
 public class BattleLogic {
     DifficultySelection difficultySelection = new DifficultySelection();
     BattleWinCalculator battleWinCalculator = new BattleWinCalculator();
-
     PlayerSelection playerSelection = new PlayerSelection();
-
     Scanner scanner = new Scanner(System.in);
     int damage;
     boolean battleKeepGoing;
@@ -78,8 +76,6 @@ public class BattleLogic {
         return player.getHp();
     }
 
-
-
     //Use these function for getting the output dialogue
     public boolean attackBattleTurnOrder(CharacterBase player, CharacterBase enemy){
         playerAttack(player, enemy);
@@ -100,8 +96,6 @@ public class BattleLogic {
         }
         return battleKeepGoing;
     }
-
-
 
     //use this and the attackBattleTurnOrder function for the textbox dialogue in the battle menu
     public boolean defendBattleTurnOrder(CharacterBase player, CharacterBase enemy){

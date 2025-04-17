@@ -16,7 +16,6 @@ import java.io.FileInputStream;
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class EndCard {
-    //BattleLogic battleLogic = new BattleLogic();
     int winAmount;
     CharacterBase enemy;
     Pane layout = new Pane();
@@ -27,8 +26,6 @@ public class EndCard {
     VBox menuOptions = new VBox(20.0, restartButton, backMenuButton);
     HBox exitBox = new HBox(exitButton);
     String backgroundName;
-
-
 
     public void start(Stage stage, CharacterBase enemy, int winAmount) {
         this.winAmount = winAmount;
@@ -51,7 +48,7 @@ public class EndCard {
         stage.setScene(scene);
         stage.show();
         layout.setBackground(loadBackground());
-}
+    }
 
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();

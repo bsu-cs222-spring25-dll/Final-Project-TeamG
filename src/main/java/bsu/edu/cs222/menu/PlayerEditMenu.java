@@ -22,7 +22,6 @@ public class PlayerEditMenu {
     Label attackLabel = createLabel("Attack: ", 25);
     Label defenseLabel = createLabel("Defense: ", 25);
     Button playerOneButton = createPlayerButton("Player One", 15);
-    //Button playerTwoButton = createPlayerButton("Player Two", 15);
     Button saveButton = createFunctionButton("Save changes");
     Button startBattleButton = createFunctionButton("Start Battle");
     Button mainMenuButton = createFunctionButton("Back to Main Menu");
