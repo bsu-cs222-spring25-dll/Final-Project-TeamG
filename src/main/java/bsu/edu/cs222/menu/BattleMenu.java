@@ -29,6 +29,7 @@ public class BattleMenu {
     Scene scene = new Scene(layout, 800, 600);
     String backgroundName;
     int winAmount = battleWinCalculator.getBattleWinNumber();
+    String battleEndResult;
 
     public void start(Stage stage, CharacterBase enemy, CharacterBase player, int winAmount) {
         this.winAmount = winAmount;
@@ -37,8 +38,10 @@ public class BattleMenu {
         stage.setTitle("Battle!");
         layout.setStyle("-fx-background-color: #6badce;");
         endCardButton.setOnAction(_ -> openEndCard((stage)));
-        attackButton.setOnAction(_ -> battleLogic.attackBattleTurnOrder(player, enemy));
-        defendButton.setOnAction(_ -> battleLogic.defendBattleTurnOrder(player, enemy));
+        //attackButton.setOnAction(_ -> battleLogic.attackBattleTurnOrder(player, enemy));
+        attackButton.setOnAction(_ -> attackButtonAction(stage));
+        //defendButton.setOnAction(_ -> battleLogic.defendBattleTurnOrder(player, enemy));
+        defendButton.setOnAction(_ -> defendButtonAction(stage));
         endCardButton.setFont(new Font("Century", 8.0));
         endCardButton.setPrefSize(90.0, 30.0);
         menuOptions.setStyle("-fx-alignment: bottom-right;");
@@ -94,6 +97,36 @@ public class BattleMenu {
         } catch(Exception e){
             System.err.println("Failed to load background image.");
             return new Background(new BackgroundFill(Color.BLACK, null, null));
+        }
+    }
+
+    public void attackButtonAction(Stage stage){
+        battleLogic.attackBattleTurnOrder(player, enemy);
+        if(enemy.getHp() == 0){
+            openEndCard((stage));
+
+        }
+        else if(player.getHp() == 0){
+            openEndCard((stage));
+
+        }
+        else{
+
+        }
+    }
+
+    public void defendButtonAction(Stage stage){
+        battleLogic.defendBattleTurnOrder(player, enemy);
+        if(enemy.getHp() == 0){
+            openEndCard((stage));
+
+        }
+        else if(player.getHp() == 0){
+            openEndCard((stage));
+
+        }
+        else{
+
         }
     }
 

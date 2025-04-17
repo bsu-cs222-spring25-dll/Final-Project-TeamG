@@ -26,6 +26,7 @@ public class EndCard {
     Button exitButton = createExitButton("X");
     VBox menuOptions = new VBox(20.0, restartButton, backMenuButton);
     HBox exitBox = new HBox(exitButton);
+    String backgroundName;
 
 
 
@@ -44,6 +45,9 @@ public class EndCard {
         exitBox.setLayoutY(10);
         exitBox.setPadding(new Insets(0, 5, 0, 0));
         layout.getChildren().addAll(menuOptions, exitBox);
+
+        getBackgroundName();
+
         stage.setScene(scene);
         stage.show();
         layout.setBackground(loadBackground());
@@ -71,13 +75,22 @@ public class EndCard {
 }
 
     private Background loadBackground(){
-        try(FileInputStream input = new FileInputStream("src/Assets/EndCardBG.PNG")){
+        try(FileInputStream input = new FileInputStream("src/Assets/" + backgroundName)){
             Image image = new Image(input);
             BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
             return new Background(backgroundImage);
         } catch(Exception e){
             System.err.println("Failed to load background image.");
             return new Background(new BackgroundFill(Color.BLACK, null, null));
+        }
+    }
+
+    private void getBackgroundName(){
+        if(enemy.getHp() == 0){
+            backgroundName = "EndCardBG.PNG";
+        }
+        else{
+            backgroundName = "BattleMenuSketchBG.jpg";
         }
     }
 }
