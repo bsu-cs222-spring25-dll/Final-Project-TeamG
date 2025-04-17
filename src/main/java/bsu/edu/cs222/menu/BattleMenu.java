@@ -61,7 +61,7 @@ public class BattleMenu {
     private void openEndCard(Stage stage){
         //battleWinCalculator.increaseWinCount();
         //winAmount = battleWinCalculator.getBattleWinNumber();
-        winAmount++;
+        //winAmount++;
         System.out.printf("Number of wins: %d", winAmount);
 
         EndCard endCard = new EndCard();
@@ -104,6 +104,7 @@ public class BattleMenu {
     public void attackButtonAction(Stage stage){
         battleLogic.attackBattleTurnOrder(player, enemy);
         if(enemy.getHp() == 0){
+            winAmount++;
             openEndCard((stage));
 
         }
