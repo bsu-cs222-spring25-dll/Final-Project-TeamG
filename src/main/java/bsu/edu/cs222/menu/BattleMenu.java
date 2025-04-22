@@ -61,6 +61,11 @@ public class BattleMenu {
         enemyStatsDisplay.setLayoutX(550.0);
         enemyStatsDisplay.setLayoutY(220.0);
 
+        playerHPLabel.setText("HP " + player.getHp());
+        enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
+        playerDefenseLabel.setText("Defense: " + player.defend());
+        actionTextLabel.setText("The battle begins!");
+
         getBackgroundName();
 
         stage.setScene(scene);
@@ -114,7 +119,9 @@ public class BattleMenu {
 
     public void attackButtonAction(Stage stage){
         battleLogic.attackBattleTurnOrder(player, enemy);
+        actionTextLabel.setText("You did " + battleLogic.getDamage() + "damage!\n" + enemy.getName() + " did " + (enemy.attack() - player.defend() + " damage to you!"));
         playerHPLabel.setText("HP: " + player.getHp());
+        enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
         if(enemy.getHp() == 0){
             winAmount++;
             openEndCard((stage));
@@ -129,6 +136,7 @@ public class BattleMenu {
 
     public void defendButtonAction(Stage stage){
         battleLogic.defendBattleTurnOrder(player, enemy);
+        actionTextLabel.setText("You defended! " + enemy.getName() + " did" + battleLogic.getDamage() + "to you!");
         playerHPLabel.setText("HP: " + player.getHp());
         if(enemy.getHp() == 0){
             openEndCard((stage));

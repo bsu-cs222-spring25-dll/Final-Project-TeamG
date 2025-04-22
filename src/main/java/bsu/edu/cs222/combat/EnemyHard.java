@@ -5,7 +5,7 @@ public class EnemyHard extends CharacterBase {
     public int defensePower;
 
     public EnemyHard(String name){
-        super(name, 20);
+        super(name, 100);
         this.attackPower = 25;
         this.defensePower = 5;
     }

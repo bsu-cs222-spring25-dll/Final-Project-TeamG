@@ -113,6 +113,10 @@ public class BattleLogic {
 
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
     public boolean isBattleKeepGoing() {
         return battleKeepGoing;
     }
