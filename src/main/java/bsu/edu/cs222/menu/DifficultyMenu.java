@@ -1,6 +1,5 @@
 package bsu.edu.cs222.menu;
 
-import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,9 +15,7 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 public class DifficultyMenu {
     private final DifficultySelection difficultySelection = new DifficultySelection();
     private String selectedDifficulty;
-    //BattleLogic battleLogic = new BattleLogic();
     public int winAmount;
-
 
     public void start(Stage stage, int winAmount) {
         this.winAmount = winAmount;

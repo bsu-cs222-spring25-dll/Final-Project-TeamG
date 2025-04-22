@@ -16,7 +16,6 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 public class PlayerEditMenu {
     CharacterBase player;
     CharacterBase enemy;
-
     Label playerLabel = createLabel("Player 1", 45);
     Label hpLabel = createLabel("HP: ", 25);
     Label attackLabel = createLabel("Attack: ", 25);
@@ -36,7 +35,6 @@ public class PlayerEditMenu {
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
     int selectedPlayer = 1;
-
     int winAmount;
 
     public void start(Stage stage, CharacterBase enemy, CharacterBase player, int winAmount) {

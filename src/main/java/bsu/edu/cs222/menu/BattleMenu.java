@@ -21,7 +21,7 @@ public class BattleMenu {
     BattleWinCalculator battleWinCalculator = new BattleWinCalculator();
     CharacterBase enemy;
     CharacterBase player;
-    Label playerHPLabel = createLabel("HP: " + player.getHp(), 20);
+    Label playerHPLabel = createLabel(" ", 20);
     Label playerDefenseLabel = createLabel("Defense: ", 20);
     Label enemyHPLabel = createLabel("HP: ", 20);
     Label actionTextLabel = createLabel(" ", 15);
@@ -114,6 +114,7 @@ public class BattleMenu {
 
     public void attackButtonAction(Stage stage){
         battleLogic.attackBattleTurnOrder(player, enemy);
+        playerHPLabel.setText("HP: " + player.getHp());
         if(enemy.getHp() == 0){
             winAmount++;
             openEndCard((stage));
@@ -128,6 +129,7 @@ public class BattleMenu {
 
     public void defendButtonAction(Stage stage){
         battleLogic.defendBattleTurnOrder(player, enemy);
+        playerHPLabel.setText("HP: " + player.getHp());
         if(enemy.getHp() == 0){
             openEndCard((stage));
 
