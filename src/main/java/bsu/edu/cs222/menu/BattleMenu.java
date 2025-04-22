@@ -5,6 +5,7 @@ import bsu.edu.cs222.combat.BattleWinCalculator;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -20,11 +21,17 @@ public class BattleMenu {
     BattleWinCalculator battleWinCalculator = new BattleWinCalculator();
     CharacterBase enemy;
     CharacterBase player;
+    Label playerHPLabel = createLabel("HP: " + player.getHp(), 20);
+    Label playerDefenseLabel = createLabel("Defense: ", 20);
+    Label enemyHPLabel = createLabel("HP: ", 20);
+    Label actionTextLabel = createLabel(" ", 15);
     Button endCardButton = new Button("Go to end card menu");
     Button attackButton = createPlayerButton("Attack", 15);
     Button defendButton = createPlayerButton("Defense", 15);
     VBox menuOptions = new VBox(15.0, endCardButton);
     VBox actionOptions = new VBox(15.0, attackButton, defendButton);
+    VBox playerStatsDisplay = new VBox(20.0, playerHPLabel, playerDefenseLabel);
+    VBox enemyStatsDisplay = new VBox(5.0, enemyHPLabel);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
     String backgroundName;
@@ -48,13 +55,17 @@ public class BattleMenu {
         menuOptions.setLayoutX(650.0);
         menuOptions.setLayoutY(550.0);
         actionOptions.setLayoutX(50.0);
-        actionOptions.setLayoutY(450.0);
+        actionOptions.setLayoutY(470.0);
+        playerStatsDisplay.setLayoutX(349.0);
+        playerStatsDisplay.setLayoutY(485.0);
+        enemyStatsDisplay.setLayoutX(550.0);
+        enemyStatsDisplay.setLayoutY(220.0);
 
         getBackgroundName();
 
         stage.setScene(scene);
         stage.show();
-        layout.getChildren().addAll(menuOptions, actionOptions);
+        layout.getChildren().addAll(menuOptions, actionOptions, playerStatsDisplay, enemyStatsDisplay);
         layout.setBackground(loadBackground());
     }
 
@@ -106,11 +117,9 @@ public class BattleMenu {
         if(enemy.getHp() == 0){
             winAmount++;
             openEndCard((stage));
-
         }
         else if(player.getHp() == 0){
             openEndCard((stage));
-
         }
         else{
 
@@ -131,6 +140,4 @@ public class BattleMenu {
 
         }
     }
-
-
 }

@@ -48,7 +48,7 @@ public class PlayerEditMenu {
         layout.setStyle("-fx-background-color: #6badce;");
         titleBox.setLayoutX(290);
         titleBox.setLayoutY(30);
-        playerOneButton.setOnAction(_ -> switchPlayer(1));
+        //playerOneButton.setOnAction(_ -> switchPlayer(1));
 
         saveButton.setOnAction(_ -> setEditedStats(player));
         resetStatsButton.setOnAction(_ -> resetStats(player));
