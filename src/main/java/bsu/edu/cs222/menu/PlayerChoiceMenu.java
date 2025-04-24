@@ -9,7 +9,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class PlayerChoiceMenu{

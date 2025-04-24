@@ -48,7 +48,6 @@ public class EndCard {
         exitBox.setLayoutY(10);
         exitBox.setPadding(new Insets(0, 5, 0, 0));
         layout.getChildren().addAll(menuOptions, exitBox, winAmountDisplay);
-
         getBackgroundName();
         stage.setScene(scene);
         stage.show();

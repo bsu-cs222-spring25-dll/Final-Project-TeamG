@@ -10,7 +10,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class PlayerEditMenu {
@@ -40,15 +39,12 @@ public class PlayerEditMenu {
         this.enemy = enemy;
         this.player = player;
         this.winAmount = winAmount;
-
         stage.setTitle("Edit Player");
         layout.setStyle("-fx-background-color: #6badce;");
         titleBox.setLayoutX(290);
         titleBox.setLayoutY(30);
-
         saveButton.setOnAction(_ -> setEditedStats(player));
         resetStatsButton.setOnAction(_ -> resetStats(player));
-
         startBattleButton.setOnAction(_ -> startBattle(stage));
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
         playerSelection.setLayoutX(40);

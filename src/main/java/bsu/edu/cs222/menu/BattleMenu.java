@@ -1,8 +1,6 @@
 package bsu.edu.cs222.menu;
 
-import bsu.edu.cs222.combat.BattleLogic;
-import bsu.edu.cs222.combat.BattleWinCalculator;
-import bsu.edu.cs222.combat.CharacterBase;
+import bsu.edu.cs222.combat.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,7 +20,7 @@ public class BattleMenu {
     Label playerHPLabel = createLabel(" ", 20);
     Label playerDefenseLabel = createLabel(" ", 20);
     Label enemyHPLabel = createLabel(" ", 20);
-    Label actionTextLabel = createLabel(" ", 15);
+    Label actionTextLabel = createLabel(" ", 50);
     Button endCardButton = new Button("Go to end card menu");
     Button attackButton = createPlayerButton("Attack", 15);
     Button defendButton = createPlayerButton("Defense", 15);
@@ -41,12 +39,26 @@ public class BattleMenu {
         this.player = player;
         stage.setTitle("Battle!");
         layout.setStyle("-fx-background-color: #6badce;");
-        endCardButton.setOnAction(_ -> openEndCard((stage)));
-        attackButton.setOnAction(_ -> attackButtonAction(stage));
-        defendButton.setOnAction(_ -> defendButtonAction(stage));
+        setupButtons(stage);
+        setupLayout();
+        updateLabelStart();
+        menuOptions.setStyle("-fx-alignment: bottom-right;");
+        getBackgroundName();
+        layout.getChildren().addAll(menuOptions, actionOptions, playerStatsDisplay, enemyStatsDisplay, actionTextLabel);
+        stage.setScene(scene);
+        stage.show();
+        layout.setBackground(loadBackground());
+    }
+
+    private void setupButtons(Stage stage) {
         endCardButton.setFont(new Font("Century", 8.0));
         endCardButton.setPrefSize(90.0, 30.0);
-        menuOptions.setStyle("-fx-alignment: bottom-right;");
+        endCardButton.setOnAction(_ -> openEndCard(stage));
+        attackButton.setOnAction(_ -> attackButtonAction(stage));
+        defendButton.setOnAction(_ -> defendButtonAction(stage));
+    }
+
+    private void setupLayout() {
         menuOptions.setLayoutX(650.0);
         menuOptions.setLayoutY(550.0);
         actionOptions.setLayoutX(50.0);
@@ -55,26 +67,19 @@ public class BattleMenu {
         playerStatsDisplay.setLayoutY(485.0);
         enemyStatsDisplay.setLayoutX(550.0);
         enemyStatsDisplay.setLayoutY(240.0);
+        actionTextLabel.setLayoutX(80.0);
+        actionTextLabel.setLayoutY(50.0);
+    }
 
+    private void updateLabelStart(){
         playerHPLabel.setText("HP: " + player.getHp());
-        enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
         playerDefenseLabel.setText("Defense: " + player.defend());
+        enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
         actionTextLabel.setText("The battle begins!");
-
-        getBackgroundName();
-
-        stage.setScene(scene);
-        stage.show();
-        layout.getChildren().addAll(menuOptions, actionOptions, playerStatsDisplay, enemyStatsDisplay);
-        layout.setBackground(loadBackground());
     }
 
     private void openEndCard(Stage stage){
-        //battleWinCalculator.increaseWinCount();
-        //winAmount = battleWinCalculator.getBattleWinNumber();
-        //winAmount++;
         System.out.printf("Number of wins: %d", winAmount);
-
         EndCard endCard = new EndCard();
         try {
             endCard.start(new Stage(), enemy, winAmount);
@@ -114,8 +119,7 @@ public class BattleMenu {
 
     public void attackButtonAction(Stage stage){
         battleLogic.attackBattleTurnOrder(player, enemy);
-        actionTextLabel.setText("You did " + battleLogic.getDamage() + "damage!\n" + enemy.getName() + " did " + (enemy.attack() - player.defend() + " damage to you!"));
-        playerHPLabel.setText("HP: " + player.getHp());
+        actionTextLabel.setText("You did " + battleLogic.getDamage() + " damage! \n" + enemy.getName() + " did " + (enemy.attack() - player.defend() + " damage to you!"));
         enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
         if(enemy.getHp() == 0){
             winAmount++;
@@ -128,8 +132,7 @@ public class BattleMenu {
 
     public void defendButtonAction(Stage stage){
         battleLogic.defendBattleTurnOrder(player, enemy);
-        actionTextLabel.setText("You defended! " + enemy.getName() + " did" + battleLogic.getDamage() + "to you!");
-        playerHPLabel.setText("HP: " + player.getHp());
+        actionTextLabel.setText("You defended! " + enemy.getName() + " did " + battleLogic.getDamage() + " to you!");
         if(enemy.getHp() == 0){
             openEndCard((stage));
         }
