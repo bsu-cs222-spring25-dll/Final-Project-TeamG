@@ -8,13 +8,16 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class EndCard {
     int winAmount;
+    Text winAmountDisplay = new Text();
     CharacterBase enemy;
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
@@ -28,8 +31,13 @@ public class EndCard {
     public void start(Stage stage, CharacterBase enemy, int winAmount) {
         this.winAmount = winAmount;
         this.enemy = enemy;
-        stage.setTitle("End Card" + winAmount);
+        stage.setTitle("End Card");
         layout.setStyle("-fx-background-color: #6badce;");
+        winAmountDisplay.setText("Wins: " + winAmount);
+        winAmountDisplay.setX(350.0);
+        winAmountDisplay.setY(480.0);
+        winAmountDisplay.setFont(Font.font("Century", FontWeight.BOLD, 24));
+        winAmountDisplay.setFill(Color.WHITE);
         restartButton.setOnAction(_ -> restart(stage));
         backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
         exitButton.setOnAction(_ -> stage.close());
@@ -39,7 +47,7 @@ public class EndCard {
         exitBox.setAlignment(Pos.TOP_RIGHT);
         exitBox.setLayoutY(10);
         exitBox.setPadding(new Insets(0, 5, 0, 0));
-        layout.getChildren().addAll(menuOptions, exitBox);
+        layout.getChildren().addAll(menuOptions, exitBox, winAmountDisplay);
 
         getBackgroundName();
 

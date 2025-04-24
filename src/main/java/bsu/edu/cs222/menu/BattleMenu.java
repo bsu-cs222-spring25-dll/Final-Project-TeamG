@@ -12,11 +12,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class BattleMenu {
-
     BattleLogic battleLogic = new BattleLogic();
     BattleWinCalculator battleWinCalculator = new BattleWinCalculator();
     CharacterBase enemy;

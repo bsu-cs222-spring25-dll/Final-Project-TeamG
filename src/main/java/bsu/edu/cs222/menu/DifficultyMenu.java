@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
 import bsu.edu.cs222.combat.DifficultySelection;
-
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class DifficultyMenu {
