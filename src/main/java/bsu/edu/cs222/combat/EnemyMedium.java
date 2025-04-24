@@ -4,7 +4,7 @@ public class EnemyMedium extends CharacterBase {
     public int attackPower;
     public int defensePower;
     public EnemyMedium(String name){
-        super(name, 20);
+        super(name, 70);
         this.attackPower = 10;
         this.defensePower = 8;
     }
