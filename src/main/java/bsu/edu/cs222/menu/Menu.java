@@ -19,7 +19,7 @@ public class Menu extends Application {
         primaryStage.setTitle("RPG Battle");
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
-        Button fightMonsterButton = new Button("Fight Enemy");
+        Button fightMonsterButton = new Button("Start");
         fightMonsterButton.setPrefSize(150, 55);
         fightMonsterButton.setFont(Font.font("Century", 20.0));
         fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
