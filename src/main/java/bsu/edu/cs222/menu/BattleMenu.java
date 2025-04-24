@@ -120,7 +120,7 @@ public class BattleMenu {
     public void attackButtonAction(Stage stage){
         battleLogic.attackBattleTurnOrder(player, enemy);
         playerHPLabel.setText("HP: " + player.getHp());
-        actionTextLabel.setText("You did " + (player.attack() - enemy.defend()) + " damage! \n" + enemy.getName() + " did " + battleLogic.getDamage() + " damage to you!");
+        actionTextLabel.setText("You did " + battleLogic.getPlayerDamage() + " damage! \n" + enemy.getName() + " did " + battleLogic.getEnemyDamage() + " damage to you!");
         enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
         if(enemy.getHp() == 0){
             winAmount++;
@@ -134,7 +134,7 @@ public class BattleMenu {
     public void defendButtonAction(Stage stage){
         battleLogic.defendBattleTurnOrder(player, enemy);
         playerHPLabel.setText("HP: " + player.getHp());
-        actionTextLabel.setText("You defended! " + enemy.getName() + " did \n" + battleLogic.getDamage() + " to you!");
+        actionTextLabel.setText("You defended! " + enemy.getName() + " did \n" + battleLogic.getEnemyDamage() + " to you!");
         if(enemy.getHp() == 0){
             openEndCard((stage));
         }

@@ -7,7 +7,8 @@ public class BattleLogic {
     BattleWinCalculator battleWinCalculator = new BattleWinCalculator();
     PlayerSelection playerSelection = new PlayerSelection();
     Scanner scanner = new Scanner(System.in);
-    int damage;
+    int enemyDamage;
+    int playerDamage;
     int playerChoice;
     boolean battleKeepGoing;
 
@@ -37,30 +38,30 @@ public class BattleLogic {
 
     private void playerAttack(CharacterBase player, CharacterBase enemy){
         System.out.printf("\n%s struck %s! ", player.getName(), enemy.getName());
-        damage = player.attack() - enemy.defend();
-        if(damage < 0){
-            damage = 0;
+        playerDamage = player.attack() - enemy.defend();
+        if(playerDamage < 0){
+            playerDamage = 0;
         } else {
-            enemy.setHp(enemy.getHp() - damage);
+            enemy.setHp(enemy.getHp() - playerDamage);
         }
         if(enemy.getHp() < 0){
             enemy.setHp(0);
         }
-        System.out.printf("\n%d damage was dealt to %s", damage, enemy.getName());
+        System.out.printf("\n%d damage was dealt to %s", playerDamage, enemy.getName());
     }
 
     private void enemyAttack(CharacterBase player, CharacterBase enemy){
         System.out.printf("\n%s maimed %s! ", enemy.getName(), player.getName());
-        damage = enemy.attack() - player.defend();
-        if(damage < 0){
-            damage = 0;
+        enemyDamage = enemy.attack() - player.defend();
+        if(enemyDamage < 0){
+            enemyDamage = 0;
         } else {
-            player.setHp(player.getHp() - damage);
+            player.setHp(player.getHp() - enemyDamage);
         }
         if(player.getHp() < 0){
             player.setHp(0);
         }
-        System.out.printf("%d damage was dealt to %s", damage, player.getName());
+        System.out.printf("%d damage was dealt to %s", enemyDamage, player.getName());
     }
 
     //Use these function for getting the output dialogue
@@ -95,7 +96,11 @@ public class BattleLogic {
         }
     }
 
-    public int getDamage() {
-        return damage;
+    public int getPlayerDamage() {
+        return playerDamage;
+    }
+
+    public int getEnemyDamage() {
+        return enemyDamage;
     }
 }
