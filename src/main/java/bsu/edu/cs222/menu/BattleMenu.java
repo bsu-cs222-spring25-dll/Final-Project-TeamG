@@ -84,21 +84,21 @@ public class BattleMenu {
         stage.close();
     }
 
-    private String getBackgroundName(){
-        if(enemy.getName().equals("Bunbun")){
-            backgroundName = "EasyEnemyBG.PNG";
-
+    private void getBackgroundName(){
+        switch(enemy.getName()){
+            case "Bunbun":
+                backgroundName = "EasyEnemyBG.PNG";
+                break;
+            case "Gobbo":
+                backgroundName = "MediumEnemyBG.PNG";
+                break;
+            case "Howard":
+                backgroundName = "HardEnemyBG.PNG";
+                break;
+            default:
+                backgroundName = "BattleMenuSketchBG.jpg";
+                break;
         }
-        else if(enemy.getName().equals("Gobbo")){
-            backgroundName = "MediumEnemyBG.PNG";
-        }
-        else if(enemy.getName().equals("Howard")){
-            backgroundName = "HardEnemyBG.PNG";
-        }
-        else{
-            backgroundName = "BattleMenuSketchBG.jpg";
-        }
-        return backgroundName;
     }
 
     private Background loadBackground(){
@@ -124,9 +124,6 @@ public class BattleMenu {
         else if(player.getHp() == 0){
             openEndCard((stage));
         }
-        else{
-
-        }
     }
 
     public void defendButtonAction(Stage stage){
@@ -135,14 +132,9 @@ public class BattleMenu {
         playerHPLabel.setText("HP: " + player.getHp());
         if(enemy.getHp() == 0){
             openEndCard((stage));
-
         }
         else if(player.getHp() == 0){
             openEndCard((stage));
-
-        }
-        else{
-
         }
     }
 }

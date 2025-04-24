@@ -1,6 +1,5 @@
 package bsu.edu.cs222.menu;
 
-import bsu.edu.cs222.combat.BattleLogic;
 import bsu.edu.cs222.combat.CharacterBase;
 import bsu.edu.cs222.combat.PlayerSelection;
 import javafx.scene.Scene;
@@ -17,10 +16,7 @@ public class PlayerChoiceMenu{
     DifficultyMenu difficultyMenu = new DifficultyMenu();
     String selectedDifficulty = difficultyMenu.getSelectedDifficulty();
     PlayerSelection playerSelection = new PlayerSelection();
-
-    BattleLogic battleLogic = new BattleLogic();
     int winAmount;
-
     String selectedPlayer;
     CharacterBase enemy;
     CharacterBase chosenPlayer;
@@ -56,10 +52,6 @@ public class PlayerChoiceMenu{
         chosenPlayer = playerSelection.getSelectedPlayer(player);
         System.out.println("Selected player: " + chosenPlayer.getName());
     }
-
-    //public String getSelectedPlayer(){
-        //return selectedPlayer;
-    //}
 
     private void returnToDifficultyMenu(Stage stage){
         DifficultyMenu difficultyMenu = new DifficultyMenu();

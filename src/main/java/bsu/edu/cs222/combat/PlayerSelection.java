@@ -12,7 +12,6 @@ public class PlayerSelection {
         return userPlayerChoice;
     }
     public CharacterBase getSelectedPlayer(String userPlayerChoice){
-        //getPromptPlayerUserChoice();
         if(userPlayerChoice.equals("Player One")){
             player = new PlayerOne("Player One");
         }

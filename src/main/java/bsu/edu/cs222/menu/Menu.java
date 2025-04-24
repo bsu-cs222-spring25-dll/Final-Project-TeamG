@@ -1,8 +1,5 @@
 package bsu.edu.cs222.menu;
 
-import bsu.edu.cs222.combat.BattleLogic;
-import bsu.edu.cs222.combat.CharacterBase;
-import bsu.edu.cs222.combat.PlayerOne;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,16 +10,12 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
-
 import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class Menu extends Application {
-    CharacterBase playerOneBase = new PlayerOne("Player One");
-    //BattleLogic battleLogic = new BattleLogic();
     int winAmount;
 
     public void start(Stage primaryStage) {
-        //this.winAmount = winAmount;
         primaryStage.setTitle("RPG Battle" + winAmount);
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
@@ -30,12 +23,6 @@ public class Menu extends Application {
         fightMonsterButton.setPrefSize(150, 55);
         fightMonsterButton.setFont(Font.font("Century", 20.0));
         fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
-
-        //We don't need the edit player button on the first menu
-        //Button editPlayerButton = new Button("Edit Player");
-        //editPlayerButton.setPrefSize(150,55);
-        //editPlayerButton.setFont(Font.font("Century", 20.0));
-        //editPlayerButton.setOnAction(_ -> openPlayerEditMenu(primaryStage));
 
         Button exitButton = createExitButton("X");
         exitButton.setOnAction(_ -> primaryStage.close());
@@ -56,13 +43,6 @@ public class Menu extends Application {
         System.out.println("Opening Difficulty menu...");
         DifficultyMenu difficultyMenu = new DifficultyMenu();
         difficultyMenu.start(new Stage(), winAmount);
-        primaryStage.close();
-    }
-
-    private void openPlayerEditMenu(Stage primaryStage){
-        System.out.println("Opening Player edit menu...");
-        PlayerEditMenu playerEditMenu = new PlayerEditMenu();
-        //playerEditMenu.start(new Stage());
         primaryStage.close();
     }
 

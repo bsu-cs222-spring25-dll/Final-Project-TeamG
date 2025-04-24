@@ -34,7 +34,6 @@ public class PlayerEditMenu {
     HBox buttonBox = new HBox(20, saveButton, startBattleButton, mainMenuButton);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
-    int selectedPlayer = 1;
     int winAmount;
 
     public void start(Stage stage, CharacterBase enemy, CharacterBase player, int winAmount) {
@@ -46,7 +45,6 @@ public class PlayerEditMenu {
         layout.setStyle("-fx-background-color: #6badce;");
         titleBox.setLayoutX(290);
         titleBox.setLayoutY(30);
-        //playerOneButton.setOnAction(_ -> switchPlayer(1));
 
         saveButton.setOnAction(_ -> setEditedStats(player));
         resetStatsButton.setOnAction(_ -> resetStats(player));
@@ -73,12 +71,6 @@ public class PlayerEditMenu {
         layout.setBackground(loadBackground());
     }
 
-    public void switchPlayer(int playerNumber){
-        selectedPlayer = playerNumber;
-        playerLabel.setText("Player " + playerNumber);
-        System.out.println("Switched to Player " + playerNumber);
-    }
-
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
         try {
@@ -101,26 +93,12 @@ public class PlayerEditMenu {
     }
 
     private void setEditedStats(CharacterBase playerOne){
-        if(hpInput.getText().equals(null)){
-            playerOne.setHp(25);
-        }
-        else{
-            playerOne.setHp(Integer.parseInt(hpInput.getText()));
-        }
-
-        if(attackInput.getText().equals(null)){
-            playerOne.setAttackPower(15);
-        }
-        else{
-            playerOne.setAttackPower(Integer.parseInt(attackInput.getText()));
-        }
-
-        if(defenseInput.getText().equals(null)){
-            playerOne.setDefensePower(8);
-        }
-        else{
-            playerOne.setDefensePower(Integer.parseInt(defenseInput.getText()));
-        }
+        String hpText = hpInput.getText();
+        String attackText = attackInput.getText();
+        String defenseText = defenseInput.getText();
+        playerOne.setHp(hpText.isEmpty() ? 25 : Integer.parseInt(hpText));
+        playerOne.setAttackPower(attackText.isEmpty() ? 15 : Integer.parseInt(attackText));
+        playerOne.setDefensePower(defenseText.isEmpty() ? 8 : Integer.parseInt(defenseText));
         System.out.println("Saved changes to stats!\n");
     }
 

@@ -18,5 +18,4 @@ public class PlayerTwo extends CharacterBase {
     public int defend(){
         return defensePower;
     }
-
 }

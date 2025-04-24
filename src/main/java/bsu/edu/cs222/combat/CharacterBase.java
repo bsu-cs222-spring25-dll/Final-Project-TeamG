@@ -11,21 +11,15 @@ public abstract class CharacterBase {
         this.maxHp = maxHp;
         this.Hp = maxHp;
     }
+
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getMaxHp() {
         return maxHp;
     }
 
-    public void setMaxHp(int maxHp) {
-        this.maxHp = maxHp;
-    }
     public int getHp() {
         return Hp;
     }

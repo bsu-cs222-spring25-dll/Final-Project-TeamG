@@ -50,7 +50,6 @@ public class EndCard {
         layout.getChildren().addAll(menuOptions, exitBox, winAmountDisplay);
 
         getBackgroundName();
-
         stage.setScene(scene);
         stage.show();
         layout.setBackground(loadBackground());
@@ -65,7 +64,7 @@ public class EndCard {
         throw new RuntimeException(e);
     }
     stage.close();
-}
+    }
 
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
@@ -75,7 +74,7 @@ public class EndCard {
         throw new RuntimeException(e);
     }
     stage.close();
-}
+    }
 
     private Background loadBackground(){
         try(FileInputStream input = new FileInputStream("src/Assets/" + backgroundName)){

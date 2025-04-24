@@ -10,8 +10,4 @@ public class BattleWinCalculator {
     public void increaseWinCount(){
         battleWinNumber++;
     }
-
-    public void setBattleWinNumber(int battleWinNumber) {
-        this.battleWinNumber = battleWinNumber;
-    }
 }
