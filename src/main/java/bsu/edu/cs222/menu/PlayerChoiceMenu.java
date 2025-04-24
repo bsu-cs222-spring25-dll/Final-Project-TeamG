@@ -25,7 +25,7 @@ public class PlayerChoiceMenu{
     public void start(Stage stage, CharacterBase enemy, int winAmount) {
         this.winAmount = winAmount;
         this.enemy = enemy;
-        stage.setTitle("Player Choice" + winAmount);
+        stage.setTitle("Player Choice");
         layout.setStyle("-fx-background-color: #6badce;");
         Button playerOneButton = createPlayerButton("Player One", 15);
         playerOneButton.setOnAction(_ -> selectPlayer("Player One"));

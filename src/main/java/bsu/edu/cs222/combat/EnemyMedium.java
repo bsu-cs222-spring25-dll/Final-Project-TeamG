@@ -5,8 +5,8 @@ public class EnemyMedium extends CharacterBase {
     public int defensePower;
     public EnemyMedium(String name){
         super(name, 70);
-        this.attackPower = 10;
-        this.defensePower = 8;
+        this.attackPower = 15;
+        this.defensePower = 9;
     }
 
     @Override
