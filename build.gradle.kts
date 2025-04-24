@@ -30,5 +30,5 @@ javafx {
     modules("javafx.controls", "javafx.fxml")
 }
 application {
-    mainClass.set("bsu.edu.cs222.Main")
+    mainClass.set("bsu.edu.cs222.menu.Main")
 }
