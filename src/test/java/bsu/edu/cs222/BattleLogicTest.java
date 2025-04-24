@@ -17,6 +17,6 @@ public class BattleLogicTest {
         BattleLogic battleLogic = new BattleLogic();
         battleLogic.attackBattleTurnOrder(player, enemyMedium);
         assertTrue(enemyMedium.getHp() < 100, "Enemy HP should be reduced after attack.");
-        assertTrue(battleLogic.getDamage() >= 0, "Damage should never be negative.");
+        assertTrue(battleLogic.getEnemyDamage() >= 0, "Damage should never be negative.");
     }
 }
