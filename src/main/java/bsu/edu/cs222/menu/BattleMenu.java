@@ -22,8 +22,8 @@ public class BattleMenu {
     CharacterBase enemy;
     CharacterBase player;
     Label playerHPLabel = createLabel(" ", 20);
-    Label playerDefenseLabel = createLabel("Defense: ", 20);
-    Label enemyHPLabel = createLabel("HP: ", 20);
+    Label playerDefenseLabel = createLabel(" ", 20);
+    Label enemyHPLabel = createLabel(" ", 20);
     Label actionTextLabel = createLabel(" ", 15);
     Button endCardButton = new Button("Go to end card menu");
     Button attackButton = createPlayerButton("Attack", 15);
@@ -36,7 +36,6 @@ public class BattleMenu {
     Scene scene = new Scene(layout, 800, 600);
     String backgroundName;
     int winAmount = battleWinCalculator.getBattleWinNumber();
-    String battleEndResult;
 
     public void start(Stage stage, CharacterBase enemy, CharacterBase player, int winAmount) {
         this.winAmount = winAmount;
@@ -45,9 +44,7 @@ public class BattleMenu {
         stage.setTitle("Battle!");
         layout.setStyle("-fx-background-color: #6badce;");
         endCardButton.setOnAction(_ -> openEndCard((stage)));
-        //attackButton.setOnAction(_ -> battleLogic.attackBattleTurnOrder(player, enemy));
         attackButton.setOnAction(_ -> attackButtonAction(stage));
-        //defendButton.setOnAction(_ -> battleLogic.defendBattleTurnOrder(player, enemy));
         defendButton.setOnAction(_ -> defendButtonAction(stage));
         endCardButton.setFont(new Font("Century", 8.0));
         endCardButton.setPrefSize(90.0, 30.0);
@@ -59,9 +56,9 @@ public class BattleMenu {
         playerStatsDisplay.setLayoutX(349.0);
         playerStatsDisplay.setLayoutY(485.0);
         enemyStatsDisplay.setLayoutX(550.0);
-        enemyStatsDisplay.setLayoutY(220.0);
+        enemyStatsDisplay.setLayoutY(240.0);
 
-        playerHPLabel.setText("HP " + player.getHp());
+        playerHPLabel.setText("HP: " + player.getHp());
         enemyHPLabel.setText(enemy.getName() + "'s HP: " + enemy.getHp());
         playerDefenseLabel.setText("Defense: " + player.defend());
         actionTextLabel.setText("The battle begins!");

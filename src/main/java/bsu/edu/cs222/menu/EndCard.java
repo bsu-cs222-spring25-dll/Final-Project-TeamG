@@ -1,7 +1,5 @@
 package bsu.edu.cs222.menu;
 
-import bsu.edu.cs222.combat.BattleLogic;
-import bsu.edu.cs222.combat.BattleWinCalculator;
 import bsu.edu.cs222.combat.CharacterBase;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -87,7 +85,7 @@ public class EndCard {
             backgroundName = "EndCardBG.PNG";
         }
         else{
-            backgroundName = "BattleMenuSketchBG.jpg";
+            backgroundName = "defeatBG.jpg";
         }
     }
 }
