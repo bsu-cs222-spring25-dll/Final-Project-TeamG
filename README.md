@@ -62,22 +62,27 @@ This iteration was implementation of test classes and a package that were create
 - <p> TurnBattleMain (The system that runs the code.) <br>
 
 ### Iteration 3
-During our final iteration, we implemented different visual aspects, added variables and desgins, displayed data information, and also put our battle system in so the player can go against the enemy.
+During our final iteration, we implemented different visual aspects, added variables and designs, displayed data information, and also put our battle system in so the player can go against the enemy.
 
 ### Test Classes Created
 - <p> BattleWinCalTest (Implements a system into the EndCard class to show the total amount of wins that the player has earned.)
 - <p> BattleLogicTest (A system that was implemented into the program on how the battle should work.)
 
 ### Extra Inputs
-- Players can now battle their opponet by attacking and defending. Players can also see when the enemy does damange to them and if they do damange to the enemy. 
-- We also added extra visuals inside of our program when it comes to battling our other enemies. During the easy difficult, you battle a bunny, medium you battle a mushroom, and hard you battle a dark creature.
+- Players can now battle their opponent by attacking and defending. Players can also see when the enemy does damage to them and if they do damage to the enemy. 
+- We added extra visuals in our program when it comes to battling our other enemies. During the easy difficult, you battle a bunny, medium you battle a mushroom, and hard you battle a dark creature.
 - We also implemented a system to show that the player can save their character stats and can see their saved wins. 
 
 
-
 ### How to run the program 
-1. Navigate to the menu class
-2. Press the green play button at the top left program to start playing!
+For full gameplay:
+1. Open gradle -> Tasks -> application
+2. run project
+
+For text-based gameplay:
+1. Open combat package
+2. Open TurnBattleMain.java
+3. run class in terminal
 
 
 ### Resources
