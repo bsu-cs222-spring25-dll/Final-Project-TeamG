@@ -21,29 +21,46 @@ public class PlayerChoiceMenu{
     CharacterBase chosenPlayer;
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
+    Button playerOneButton = createPlayerOneButton();
+    Button playerTwoButton = createPlayerTwoButton();
+    Button backButton = createPlayerButton("Back to Difficulty", 15);
+    Button startBattleButton = createPlayerButton("Start Battle", 15);
 
     public void start(Stage stage, CharacterBase enemy, int winAmount) {
         this.winAmount = winAmount;
         this.enemy = enemy;
         stage.setTitle("Player Choice");
         layout.setStyle("-fx-background-color: #6badce;");
-        Button playerOneButton = createPlayerButton("Player One", 15);
-        playerOneButton.setOnAction(_ -> selectPlayer("Player One"));
-
-        Button playerTwoButton = createPlayerButton("Player Two", 15);
-        playerTwoButton.setOnAction(_ -> selectPlayer("Player Two"));
-
-        Button backButton = createPlayerButton("Back to Difficulty", 15);
-        backButton.setOnAction(_ -> returnToDifficultyMenu(stage));
-        Button startBattleButton = createPlayerButton("Start Battle", 15);
-        startBattleButton.setOnAction(_ -> startBattle(stage));
-        VBox menuOptions = new VBox(20, playerOneButton, playerTwoButton, startBattleButton, backButton);
-        menuOptions.setLayoutX(300.0);
-        menuOptions.setLayoutY(250.0);
+        setupButtons(stage);
+        VBox menuOptions = createPlayerChoiceMenuVbox();
         layout.getChildren().addAll(menuOptions);
         stage.setScene(scene);
         stage.show();
         layout.setBackground(loadBackground());
+    }
+
+    private Button createPlayerOneButton(){
+        Button playerOneButton = createPlayerButton("Player One", 15);
+        playerOneButton.setOnAction(_ -> selectPlayer("Player One"));
+        return playerOneButton;
+    }
+
+    private Button createPlayerTwoButton(){
+        Button playerTwoButton = createPlayerButton("Player Two", 15);
+        playerTwoButton.setOnAction(_ -> selectPlayer("Player Two"));
+        return playerTwoButton;
+    }
+
+    private void setupButtons(Stage stage) {
+        backButton.setOnAction(_ -> returnToDifficultyMenu(stage));
+        startBattleButton.setOnAction(_ -> startBattle(stage));
+    }
+
+    private VBox createPlayerChoiceMenuVbox(){
+        VBox menuOptions = new VBox(20, playerOneButton, playerTwoButton, startBattleButton, backButton);
+        menuOptions.setLayoutX(300.0);
+        menuOptions.setLayoutY(250.0);
+        return menuOptions;
     }
 
     public void selectPlayer(String player){

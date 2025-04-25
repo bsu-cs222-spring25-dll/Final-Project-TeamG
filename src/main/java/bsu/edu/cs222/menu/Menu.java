@@ -14,22 +14,15 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class Menu extends Application {
     int winAmount;
+    Button fightMonsterButton = createfightMonsterButton();
+    Button exitButton = createExitButton("X");
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("RPG Battle");
         BorderPane base = new BorderPane();
         base.setStyle("-fx-background-color: #6badce;");
-        Button fightMonsterButton = new Button("Start");
-        fightMonsterButton.setPrefSize(150, 55);
-        fightMonsterButton.setFont(Font.font("Century", 20.0));
-        fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
-
-        Button exitButton = createExitButton("X");
-        exitButton.setOnAction(_ -> primaryStage.close());
-        VBox menuBox = new VBox(20.0, fightMonsterButton);
-        menuBox.setAlignment(Pos.BASELINE_CENTER);
-        menuBox.setPadding(new Insets(320, 0, 0, 0));
-        menuBox.setBackground(loadBackground());
+        setupButtons(primaryStage);
+        VBox menuBox = createMenuVBox();
         StackPane exitPane = new StackPane(exitButton);
         exitPane.setStyle("-fx-alignment: top-right;");
         base.setTop(exitPane);
@@ -37,6 +30,26 @@ public class Menu extends Application {
         Scene scene = new Scene(base, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private Button createfightMonsterButton(){
+        Button fightMonsterButton = new Button("Start");
+        fightMonsterButton.setPrefSize(150, 55);
+        fightMonsterButton.setFont(Font.font("Century", 20.0));
+        return fightMonsterButton;
+    }
+
+    private void setupButtons(Stage primaryStage) {
+        fightMonsterButton.setOnAction(_ -> openDifficultyMenu(primaryStage));
+        exitButton.setOnAction(_ -> primaryStage.close());
+    }
+
+    private VBox createMenuVBox(){
+        VBox menuBox = new VBox(20.0, fightMonsterButton);
+        menuBox.setAlignment(Pos.BASELINE_CENTER);
+        menuBox.setPadding(new Insets(320, 0, 0, 0));
+        menuBox.setBackground(loadBackground());
+        return menuBox;
     }
 
     private void openDifficultyMenu(Stage primaryStage){
