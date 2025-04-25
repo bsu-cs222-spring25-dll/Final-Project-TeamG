@@ -34,7 +34,7 @@ During this implementation, the following classes below were created and shows d
 This iteration was implementation of test classes and a package that were created for the menus to display on the program. 
 
 ### Test Classes Created: 
-- <p> PlayerChoiceMenuTest (A menu that pops up for the player to pick a character within the selection provided.) <br>
+- <p> PlayerSelectionTest (A menu that pops up for the player to pick a character within the selection provided.) <br>
 
 - <p> EnemyDisplayTest (A PNG image the displays for the player to see their enemy on their screen, making this a visual appealing effect for the player.) <br>
 
@@ -60,6 +60,20 @@ This iteration was implementation of test classes and a package that were create
 - <p> PlayerSelection (A system that is implemented in the program to let them have a selection of characters to choose from.) <br>
 
 - <p> TurnBattleMain (The system that runs the code.) <br>
+
+### Iteration 3
+During our final iteration, we implemented different visual aspects, added variables and desgins, displayed data information, and also put our battle system in so the player can go against the enemy.
+
+### Test Classes Created
+- <p> BattleWinCalTest (Implements a system into the EndCard class to show the total amount of wins that the player has earned.)
+- <p> BattleLogicTest (A system that was implemented into the program on how the battle should work.)
+
+### Extra Inputs
+- Players can now battle their opponet by attacking and defending. Players can also see when the enemy does damange to them and if they do damange to the enemy. 
+- We also added extra visuals inside of our program when it comes to battling our other enemies. During the easy difficult, you battle a bunny, medium you battle a mushroom, and hard you battle a dark creature.
+- We also implemented a system to show that the player can save their character stats and can see their saved wins. 
+
+
 
 ### How to run the program 
 1. Navigate to the menu class
