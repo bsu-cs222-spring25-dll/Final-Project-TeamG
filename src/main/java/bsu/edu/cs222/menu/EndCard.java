@@ -17,15 +17,15 @@ import static bsu.edu.cs222.menu.MenuDesign.*;
 
 public class EndCard {
     int winAmount;
-    Text winAmountDisplay = createWinDisplayAmountText();
+    Text winAmountDisplay = new Text();
     CharacterBase enemy;
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
     Button restartButton = createPlayerButton("Do you wish to restart?", 11);
     Button backMenuButton = createPlayerButton("Return to main menu?", 11);
     Button exitButton = createExitButton("X");
-    VBox menuOptions = createEndCardVBox();
-    HBox exitBox = createEndCardHBox();
+    VBox menuOptions = new VBox(20.0, restartButton, backMenuButton);
+    HBox exitBox = new HBox(exitButton);
     String backgroundName;
 
     public void start(Stage stage, CharacterBase enemy, int winAmount) {
@@ -33,7 +33,20 @@ public class EndCard {
         this.enemy = enemy;
         stage.setTitle("End Card");
         layout.setStyle("-fx-background-color: #6badce;");
-        setupButtons(stage);
+        winAmountDisplay.setText("Wins: " + winAmount);
+        winAmountDisplay.setX(350.0);
+        winAmountDisplay.setY(480.0);
+        winAmountDisplay.setFont(Font.font("Century", FontWeight.BOLD, 24));
+        winAmountDisplay.setFill(Color.WHITE);
+        restartButton.setOnAction(_ -> restart(stage));
+        backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
+        exitButton.setOnAction(_ -> stage.close());
+        menuOptions.setLayoutX(320.0);
+        menuOptions.setLayoutY(300.0);
+        exitBox.setPrefWidth(800);
+        exitBox.setAlignment(Pos.TOP_RIGHT);
+        exitBox.setLayoutY(10);
+        exitBox.setPadding(new Insets(0, 5, 0, 0));
         layout.getChildren().addAll(menuOptions, exitBox, winAmountDisplay);
         getBackgroundName();
         stage.setScene(scene);
@@ -41,57 +54,25 @@ public class EndCard {
         layout.setBackground(loadBackground());
     }
 
-    private Text createWinDisplayAmountText(){
-        Text winAmountDisplay = new Text();
-        winAmountDisplay.setText("Wins: " + winAmount);
-        winAmountDisplay.setX(350.0);
-        winAmountDisplay.setY(480.0);
-        winAmountDisplay.setFont(Font.font("Century", FontWeight.BOLD, 24));
-        winAmountDisplay.setFill(Color.WHITE);
-        return  winAmountDisplay;
-    }
-
-    private void setupButtons(Stage stage) {
-        restartButton.setOnAction(_ -> restart(stage));
-        backMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-        exitButton.setOnAction(_ -> stage.close());
-    }
-
-    private VBox createEndCardVBox(){
-        VBox menuOptions = new VBox(20.0, restartButton, backMenuButton);
-        menuOptions.setLayoutX(320.0);
-        menuOptions.setLayoutY(300.0);
-        return  menuOptions;
-    }
-
-    private HBox createEndCardHBox(){
-        HBox exitBox = new HBox(exitButton);
-        exitBox.setPrefWidth(800);
-        exitBox.setAlignment(Pos.TOP_RIGHT);
-        exitBox.setLayoutY(10);
-        exitBox.setPadding(new Insets(0, 5, 0, 0));
-        return exitBox;
-    }
-
     private void restart(Stage stage){
         PlayerChoiceMenu playerChoiceMenu = new PlayerChoiceMenu();
         try {
             enemy.setHp(enemy.getMaxHp());
             playerChoiceMenu.start(new Stage(), enemy, winAmount);
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-    stage.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        stage.close();
     }
 
     private void returnToMainMenu(Stage stage){
         Menu menu = new Menu();
-    try {
-        menu.start(new Stage());
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-    stage.close();
+        try {
+            menu.start(new Stage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        stage.close();
     }
 
     private Background loadBackground(){

@@ -15,10 +15,6 @@ public class DifficultyMenu {
     private final DifficultySelection difficultySelection = new DifficultySelection();
     private String selectedDifficulty;
     public int winAmount;
-    Button easyButton = createPlayerButton("Easy", 15);
-    Button mediumButton = createPlayerButton("Medium", 15);
-    Button hardButton = createPlayerButton("Hard", 15);
-    Button mainMenuButton = createPlayerButton("Back to Main Menu", 12);
 
     public void start(Stage stage, int winAmount) {
         this.winAmount = winAmount;
@@ -28,19 +24,19 @@ public class DifficultyMenu {
         Scene scene = new Scene(layout,800, 600);
         stage.setScene(scene);
         stage.show();
-        setupButtons(stage);
+        Button easyButton = createPlayerButton("Easy", 15);
+        easyButton.setOnAction(_ -> selectDifficulty("Easy", stage));
+        Button mediumButton = createPlayerButton("Medium", 15);
+        mediumButton.setOnAction(_ -> selectDifficulty("Medium", stage));
+        Button hardButton = createPlayerButton("Hard", 15);
+        hardButton.setOnAction(_ -> selectDifficulty("Hard", stage));
+        Button mainMenuButton = createPlayerButton("Back to Main Menu", 12);
+        mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
         VBox menuOptions = new VBox(20, easyButton, mediumButton, hardButton, mainMenuButton);
         menuOptions.setLayoutY(200.0);
         menuOptions.setLayoutX(300.0);
         layout.getChildren().addAll(menuOptions);
         layout.setBackground(loadBackground());
-    }
-
-    private void setupButtons(Stage stage) {
-        easyButton.setOnAction(_ -> selectDifficulty("Easy", stage));
-        mediumButton.setOnAction(_ -> selectDifficulty("Medium", stage));
-        hardButton.setOnAction(_ -> selectDifficulty("Hard", stage));
-        mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
     }
 
     public void selectDifficulty(String difficulty, Stage stage){

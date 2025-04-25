@@ -27,10 +27,10 @@ public class PlayerEditMenu {
     TextField hpInput = createStatField();
     TextField attackInput = createStatField();
     TextField defenseInput = createStatField();
-    GridPane statsGrid = createStatsGrid();
-    VBox titleBox = createPlayerTitleVBox();
-    VBox playerSelection = createPlayerSelectionVBox();
-    HBox buttonBox = createButtonBoxHBox();
+    GridPane statsGrid = new GridPane();
+    VBox titleBox = new VBox(20, playerLabel);
+    VBox playerSelection = new VBox(20, playerOneButton, resetStatsButton);
+    HBox buttonBox = new HBox(20, saveButton, startBattleButton, mainMenuButton);
     Pane layout = new Pane();
     Scene scene = new Scene(layout, 800, 600);
     int winAmount;
@@ -41,43 +41,14 @@ public class PlayerEditMenu {
         this.winAmount = winAmount;
         stage.setTitle("Edit Player");
         layout.setStyle("-fx-background-color: #6badce;");
-        setupButtons(stage);
-        layout.getChildren().addAll(titleBox, playerSelection, statsGrid, buttonBox);
-        stage.setScene(scene);
-        stage.show();
-        layout.setBackground(loadBackground());
-    }
-
-    private void setupButtons(Stage stage) {
+        titleBox.setLayoutX(290);
+        titleBox.setLayoutY(30);
         saveButton.setOnAction(_ -> setEditedStats(player));
         resetStatsButton.setOnAction(_ -> resetStats(player));
         startBattleButton.setOnAction(_ -> startBattle(stage));
         mainMenuButton.setOnAction(_ -> returnToMainMenu(stage));
-    }
-
-    private VBox createPlayerTitleVBox(){
-        VBox titleBox = new VBox(20, playerLabel);
-        titleBox.setLayoutX(290);
-        titleBox.setLayoutY(30);
-        return titleBox;
-    }
-
-    private VBox createPlayerSelectionVBox(){
-        VBox playerSelection = new VBox(20, playerOneButton, resetStatsButton);
         playerSelection.setLayoutX(40);
         playerSelection.setLayoutY(230);
-        return playerSelection;
-    }
-
-    private HBox createButtonBoxHBox(){
-        HBox buttonBox = new HBox(20, saveButton, startBattleButton, mainMenuButton);
-        buttonBox.setLayoutX(85);
-        buttonBox.setLayoutY(510);
-        return buttonBox;
-    }
-
-    private GridPane createStatsGrid(){
-        GridPane statsGrid = new GridPane();
         statsGrid.setVgap(25.0);
         statsGrid.setHgap(20.0);
         statsGrid.setLayoutX(250);
@@ -88,7 +59,12 @@ public class PlayerEditMenu {
         statsGrid.add(attackInput, 1, 1);
         statsGrid.add(defenseLabel, 0, 2);
         statsGrid.add(defenseInput, 1, 2);
-        return statsGrid;
+        buttonBox.setLayoutX(85);
+        buttonBox.setLayoutY(510);
+        layout.getChildren().addAll(titleBox, playerSelection, statsGrid, buttonBox);
+        stage.setScene(scene);
+        stage.show();
+        layout.setBackground(loadBackground());
     }
 
     private void returnToMainMenu(Stage stage){
